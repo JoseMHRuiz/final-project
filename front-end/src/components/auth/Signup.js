@@ -71,7 +71,7 @@ class Signup extends Component {
                           name="username"
                           value={this.state.username}
                           onChange={e => this.handleChange(e)}
-                          autofocus=""
+                          autoFocus=""
                         />
                       </div>
                     </div>
@@ -104,14 +104,14 @@ class Signup extends Component {
                     </button>
                   </form>
                 </div>
-                <p className="has-text-grey">
+                <div className="has-text-grey">
                   <Link to="/login">
                     <p>Login</p>
                   </Link>
                   {/* &nbsp;·&nbsp; */}
                   {/* <a href="../">Forgot Password</a> &nbsp;·&nbsp; */}
                   {/* <a href="../">Need Help?</a> */}
-                </p>
+                </div>
               </div>
             </div>
           </div>

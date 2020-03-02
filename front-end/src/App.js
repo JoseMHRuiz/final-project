@@ -50,6 +50,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.loggedInUser);
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (this.state.loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario
@@ -62,8 +63,8 @@ class App extends Component {
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
               />
-              <Contents />
             </header>
+            <Contents userInSession={this.state.loggedInUser}></Contents>
           </div>
         </React.Fragment>
       );
@@ -74,10 +75,10 @@ class App extends Component {
           <Redirect to="/" />
           <div className="App">
             <header className="App-header">
-              {/* <Navbar
+              <Navbar
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
-              /> */}
+              />
               <Switch>
                 <Route
                   exact
@@ -90,6 +91,7 @@ class App extends Component {
                   render={() => <Login getUser={this.getUser} />}
                 />
                 <Route exact path="/" render={() => <Landing />} />
+                <Route exact path="/home" render={() => <Contents />} />
               </Switch>
             </header>
           </div>

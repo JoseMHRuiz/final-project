@@ -1,18 +1,19 @@
 require('dotenv').config()
 const mongoose = require("mongoose");
-let faker = require("faker");
+// let faker = require("faker");
 let faker = require("faker/locale/es");
 const randomInt = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 const User = require('../models/User')
 const Box = require('../models/Box')
 const Tip = require('../models/Tip')
-const City = require('../models/City')
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
+const randomLocation = require('random-location')
+
 
 function dbConnect(cb) {
   mongoose
-    .connect(`${process.env.DBLOCAL}`, {
+    .connect(`${process.env.DBURL}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
@@ -45,7 +46,7 @@ dbConnect(() => {
       username: "Admin",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'admin@gmail.com',
-      userType: 'admin'
+      userType: 'owner'
 
     },
     {
@@ -88,8 +89,16 @@ dbConnect(() => {
     .then(() => {
       console.log('succesfully added the Tips to te data')
     })
+  const Madrid = {
+    latitude: 40.4378698,
+    longitude: -3.8196207
+  }
 
-  const city = ['Madrid', 'Barcelona', 'Valencia']
+  const R = 38500 // meters
+
+  randomLocation.randomCirclePoint(Madrid, R)
+
+  const city = ['Madrid']
   const area = ['300', '600', '1000']
   const days = [2, 5, 7]
   const duration = ['30min-1hour', '1-2 hours', '2-3 hours', '3 or more hours']
@@ -115,11 +124,11 @@ dbConnect(() => {
         area: area[randomInt(0, area.length - 1)],
         city: city[randomInt(0, city.length - 1)],
         direction: faker.address.streetName(),
-        position: {
-          lat: faker.address.latitude(),
-          lon: faker.address.longitude()
-        },
+        position: randomLocation.randomCirclePoint(Madrid, R),
         openBox: faker.random.boolean(),
+        dropBar: faker.random.boolean(),
+        juniorClass: faker.random.boolean(),
+        kidsClass: faker.random.boolean(),
         schedule: {
           mondayToFriday: {
             start: startS[randomInt(0, startS.length - 1)],
@@ -200,7 +209,7 @@ dbConnect(() => {
             have: trueFlase[randomInt(0, trueFlase.length - 1)]
           },
           foamroller: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
+            upTo: dropInPrices[randomInt(0, dropInPrices.length - 1)],
             have: trueFlase[randomInt(0, trueFlase.length - 1)]
           },
           band: {
@@ -208,7 +217,7 @@ dbConnect(() => {
           },
         },
         prices: {
-          dropin: dropInPrices[randomInt(0, randomdropInPricesKg.length - 1)],
+          dropin: dropInPrices[randomInt(0, dropInPrices.length - 1)],
           fullMonth: monthPricesFull[randomInt(0, monthPricesFull.length - 1)],
           fourDays: monthPrices4[randomInt(0, monthPrices4.length - 1)],
           threeDays: monthPrices3[randomInt(0, monthPrices3.length - 1)],

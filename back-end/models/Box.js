@@ -8,10 +8,13 @@ const boxSchema = new Schema({
     city: String,
     direction: String,
     position: {
-        lat: Number,
-        lon: Number
+        latitude: Number,
+        longitude: Number
     },
     openBox: Boolean,
+    dropBar: Boolean,
+    juniorClass: Boolean,
+    kidsClass: Boolean,
     schedule: {
         mondayToFriday: {
             start: String,

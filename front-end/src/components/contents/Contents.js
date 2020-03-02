@@ -1,14 +1,36 @@
 import React, { Component } from "react";
+import AuthService from "../auth/AuthService";
 
-//clase componente que renderiza los contenidos genéricos
-//usando rendering condicional y el componente Switch que ya conocéis podéis mostrar los contenidos oportunos que queráis
 class Contents extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { loggedInUser: null };
+    this.service = new AuthService();
+  }
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
+  }
   render() {
-    return (
-      <div>
-        <h1>Test!</h1>
-      </div>
-    );
+    // let user = this.props.loggedInUser;
+    console.log(this.props.userInSession);
+    if (this.props.userInSession) {
+      return (
+        <div>
+          <h1>YEEEES</h1>
+          Welcome {this.props.userInSession.username} -{" "}
+          {this.props.userInSession.userType}
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>NOOOT</h1>
+          {/* <h1>{user.username}</h1> */}
+          {/* Welcome {this.props.userInSession.username} -{" "}
+        {this.props.userInSession.userType} */}
+        </div>
+      );
+    }
   }
 }
 

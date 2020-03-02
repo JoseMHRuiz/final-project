@@ -22,6 +22,7 @@ class Navbar extends Component {
   };
 
   render() {
+    console.log(this.state.loggedInUser);
     if (this.state.loggedInUser) {
       return (
         <nav className="nav-style">
@@ -35,14 +36,6 @@ class Navbar extends Component {
               </button>
             </li>
           </ul>
-
-          <div className="header">
-            <img src="/images/Recurso.png" alt="" height="100" />
-            <h2>
-              Welcome {this.state.loggedInUser.username} -{" "}
-              {this.state.loggedInUser.userType}
-            </h2>
-          </div>
         </nav>
       );
     } else {
