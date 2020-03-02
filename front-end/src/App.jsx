@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "bulma/css/bulma.css";
+import "./App.sass";
 import Navbar from "./components/navbar/Navbar";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
@@ -15,7 +15,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     //arrancamos el estado con un valor de loggedInUser con nada (luego lo vamos a reemplazar con el valor real)
-    this.state = { loggedInUser: null };
+    this.state = {
+      loggedInUser: null
+    };
     this.service = new AuthService();
 
     this.fetchUser();
@@ -29,7 +31,9 @@ class App extends Component {
 
   logout = () => {
     this.service.logout().then(() => {
-      this.setState({ loggedInUser: null });
+      this.setState({
+        loggedInUser: null
+      });
     });
   };
 
@@ -51,25 +55,10 @@ class App extends Component {
 
   render() {
     console.log(this.state.loggedInUser);
+
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (this.state.loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario
-      return (
-        <React.Fragment>
-          <Redirect to="/home" />
-          <div className="App">
-            <header className="App-header">
-              <Navbar
-                userInSession={this.state.loggedInUser}
-                logout={this.logout}
-              />
-            </header>
-            <Contents userInSession={this.state.loggedInUser}></Contents>
-          </div>
-        </React.Fragment>
-      );
-    } else {
-      //si no estás logeado, mostrar opcionalmente o login o signup
       return (
         <React.Fragment>
           <Redirect to="/" />
@@ -78,23 +67,55 @@ class App extends Component {
               <Navbar
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
-              />
-              <Switch>
-                <Route
-                  exact
-                  path="/signup"
-                  render={() => <Signup getUser={this.getUser} />}
-                />
-                <Route
-                  exact
-                  path="/login"
-                  render={() => <Login getUser={this.getUser} />}
-                />
-                <Route exact path="/" render={() => <Landing />} />
-                <Route exact path="/home" render={() => <Contents />} />
-              </Switch>
-            </header>
-          </div>
+              />{" "}
+            </header>{" "}
+            <Contents userInSession={this.state.loggedInUser}> </Contents>{" "}
+          </div>{" "}
+          <Switch>
+            <Route
+              exact
+              path="/home"
+              render={() => (
+                <Contents userInSession={this.state.loggedInUser} />
+              )}
+            />{" "}
+            <Route exact path="/" render={() => <Landing> </Landing>} />
+          </Switch>
+        </React.Fragment>
+      );
+    } else {
+      //si no estás logeado, mostrar opcionalmente o login o signup
+      return (
+        <React.Fragment>
+          <Redirect to="/" />
+          <header className="App-header">
+            <Navbar
+              userInSession={this.state.loggedInUser}
+              logout={this.logout}
+            />{" "}
+          </header>{" "}
+          <Switch>
+            <Route
+              exact
+              path="/signup"
+              render={() => <Signup getUser={this.getUser} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() => <Login getUser={this.getUser} />}
+            />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <div className="App">
+                  <Landing> </Landing>{" "}
+                </div>
+              )}
+            />{" "}
+          </Switch>{" "}
+          <Redirect to="/" />
         </React.Fragment>
       );
     }

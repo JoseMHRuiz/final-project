@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import AuthService from "../auth/AuthService";
+// import AuthService from "../auth/AuthService";
 
 class Contents extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { loggedInUser: null };
-    this.service = new AuthService();
-  }
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { loggedInUser: null };
+  //   this.service = new AuthService();
+  // }
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
+  // }
   render() {
     // let user = this.props.loggedInUser;
     console.log(this.props.userInSession);

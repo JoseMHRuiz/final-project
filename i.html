@@ -1,0 +1,278 @@
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Login Now</h2>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" class="text-uppercase">Username</label>
+                        <input type="text" class="form-control" placeholder="" />
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="text-uppercase">Password</label>
+                        <input type="password" class="form-control" placeholder="" />
+                    </div>
+
+
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" />
+                            <small>Remember Me</small>
+                        </label>
+                        <button type="submit" class="btn btn-login float-right">Submit</button>
+                    </div>
+
+                </form>
+                <div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <img class="d-block img-fluid" src="https://static.pexels.com/photos/33972/pexels-photo.jpg"
+                                alt="First slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis
+                                        nostrud exercitation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid"
+                                src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg"
+                                alt="First slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis
+                                        nostrud exercitation</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block img-fluid"
+                                src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg"
+                                alt="First slide" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <div class="banner-text">
+                                    <h2>This is Heaven</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                        tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                        quis
+                                        nostrud exercitation</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section className="hero is-success is-fullheight">
+    <div className="hero-body">
+        <div className="container has-text-centered">
+            <div className="column is-4 is-offset-4">
+                <h3 className="title has-text-black">Login</h3>
+                <hr className="login-hr" />
+                <p className="subtitle has-text-black">
+                    Please login to proceed.
+                </p>
+                <div className="box">
+                    <figure className="avatar">
+                        <img src="https://placehold.it/128x128" alt="" />
+                    </figure>
+                    <form onSubmit={this.handleFormSubmit}>
+                        <div className="field">
+                            <div className="control">
+                                <input className="input is-large" type="text" placeholder="Your User" name="username"
+                                    value={this.state.username} onChange={e=> this.handleChange(e)}
+                                autoFocus=""
+                                />
+                            </div>
+                        </div>
+
+                        <div className="field">
+                            <div className="control">
+                                <input className="input is-large" type="password" name="password"
+                                    value={this.state.password} onChange={e=> this.handleChange(e)}
+                                placeholder="Your Password"
+                                />
+                            </div>
+                        </div>
+                        {/* <div className="field">
+                            <label className="checkbox">
+                                <input type="checkbox" />
+                                Remember me
+                            </label>
+                        </div> */}
+                        <button className="button is-block is-info is-large is-fullwidth" type="submit" value="Login">
+                            Login <i className="fa fa-sign-in" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+                <div className="has-text-grey">
+                    <Link to="/signup">
+                    <p>Sign Up</p>
+                    </Link>
+                    {/* &nbsp;·&nbsp; */}
+                    {/* <a href="../">Forgot Password</a> &nbsp;·&nbsp; */}
+                    {/* <a href="../">Need Help?</a> */}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="col-lg-4 col-md-7 col-sm-6 col-xs-12     login-card">
+
+
+    <form id="login-form" class="col-lg-12">
+
+        <!-- Logo -->
+        <div class="col-lg-12 logo-kapsul">
+            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png" alt="Logo" />
+        </div>
+
+
+        <div style="clear:both;"></div>
+
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-ikon">person_outline</i><span class="span-input">Kullanıcı
+                    Adınız</span></label>
+        </div>
+
+
+
+        <div class="group">
+            <input type="password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-sifre-ikon">lock</i><span class="span-input">Şifre</span></label>
+        </div>
+
+
+        <a href="javascript:void(0);" class="giris-yap-buton">Giriş Yap</a>
+
+
+
+        <div class="forgot-and-create tab-menu">
+            <a class="sifre-hatirlat-link" href="javascript:void('sifre-hatirlat-link');">Şifreni mi Unuttun ?</a>
+            <a class="hesap-olustur-link" href="javascript:void('hesap-olustur-link');">Hesap Oluştur.</a>
+        </div>
+
+
+    </form>
+
+
+
+    <form id="kayit-form" class="col-lg-12">
+
+        <div class="col-lg-12 logo-kapsul">
+            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png" alt="Logo" />
+        </div>
+
+        <div style="clear:both;"></div>
+
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-ikon">person_outline</i><span class="span-input">Kullanıcı
+                    Adınız</span></label>
+        </div>
+
+
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-ikon">mail_outline</i><span class="span-input">E-Mail</span></label>
+        </div>
+
+
+
+        <div class="group">
+            <input type="password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-sifre-ikon">lock</i><span class="span-input">Şifre</span></label>
+        </div>
+
+
+
+        <div class="group">
+            <input type="password" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-sifre-ikon">lock</i><span class="span-input">Şifre
+                    Tekrarı</span></label>
+        </div>
+
+
+
+        <a href="javascript:void(0);" class="kayit-ol-buton">Kayıt Ol</a>
+
+
+
+        <a class="zaten-hesap-var-link" href="javascript:void('zaten-hesap-var-link');">Zaten Bir Hesabınız Var mı ? ,
+            Giriş Yapın.</a>
+
+
+    </form>
+
+
+
+    <form id="sifre-hatirlat-form" class="col-lg-12">
+
+        <div class="col-lg-12 logo-kapsul">
+            <img width="100" class="logo" src="https://selimdoyranli.com/cdn/material-form/img/logo.png" alt="Logo" />
+        </div>
+
+        <div style="clear:both;"></div>
+
+
+        <div class="group">
+            <input type="text" required>
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label><i class="material-icons input-ikon">mail_outline</i><span class="span-input">E-Mail</span></label>
+        </div>
+
+
+
+        <a href="javascript:void(0);" class="sifre-hatirlat-buton">Şifremi Hatırlat</a>
+
+
+
+        <a class="zaten-hesap-var-link" href="javascript:void('zaten-hesap-var-link');">Zaten Bir Hesabınız Var mı ? ,
+            Giriş Yapın.</a>
+
+
+    </form>
+
+
+</div>

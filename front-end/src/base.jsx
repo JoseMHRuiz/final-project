@@ -5,7 +5,7 @@ import React, { Component } from "react";
 
 class base extends Component {
   render() {
-    return <div className="base"></div>;
+    return <div className="base"> </div>;
   }
 }
 
