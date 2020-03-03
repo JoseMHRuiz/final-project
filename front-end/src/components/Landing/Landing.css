@@ -1,4 +1,5 @@
-.hero.is-info {
+html,
+body {
     background: linear-gradient(rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)), url('https://unsplash.it/1200/900?random') no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -7,19 +8,18 @@
     background-size: cover;
 }
 
+
 .hero .nav,
 .hero.is-success .nav {
     -webkit-box-shadow: none;
     box-shadow: none;
+    color: white;
 }
-
-/* .navbar-brand img {
-    /* width: 150px; */
-/* height: 100px; */
 
 .hero .subtitle {
     padding: 3rem 0;
     line-height: 1.5;
+    color: beige;
 }
 
 @media screen and (max-width: 1023px) {

@@ -7,7 +7,7 @@ class Landing extends Component {
   render() {
     return (
       <div className="Landing">
-        <section className="hero is-info is-fullheight">
+        <section className="hero">
           <div className="hero-head"></div>
 
           <div className="hero-body">
