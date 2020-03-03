@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const boxSchema = new Schema({
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     boxName: String,
     affiliate: Boolean,
     area: Number,
@@ -21,10 +25,12 @@ const boxSchema = new Schema({
             end: String
         },
         saturday: {
+            open: Boolean,
             start: String,
             end: String
         },
         sunday: {
+            open: Boolean,
             start: String,
             end: String
         }
