@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const Box = require('../models/Box')
+const User = require('../models/User')
+const Comment = require('../models/Comments')
+const ensureLogin = require("connect-ensure-login");
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -225,3 +228,58 @@ router.get('/filter-box/:idBox/details', (req, res, next) => {
 //     .then(data => res.json(data))
 //     .catch(err => console.log(err));
 // });
+
+// Show user's profile page:  ensureLogin.ensureLoggedIn(),
+router.get('/users/:id', (req, res, next) => {
+  const currentUser = req.user;
+  const userParams = req.params.id
+
+  User.findById(userParams)
+    .then(user => {
+      let userFound = user
+      Comment.find({
+          user: user._id
+        })
+        .then(userComments => {
+          let owner;
+          currentUser ?
+            userFound.id === currentUser.id ?
+            owner = true :
+            owner = false :
+            owner = false
+          let dataPayload;
+          if (userComments.length === 0) {
+            dataPayload = {
+              userFound,
+              currentUser,
+              owner
+            };
+          } else {
+            dataPayload = {
+              userFound,
+              userComments,
+              currentUser,
+              owner
+            };
+          }
+          res.json(dataPayload)
+        });
+    })
+    .catch(err => console.log(err));
+});
+//ensureLogin.ensureLoggedIn(),
+//addComment
+router.post('/addComment', (req, res, next) => {
+  let userId = req.user._id;
+  // let userId = req.body._id;
+  let comment = req.body.comment;
+  Comment.create({
+      comment: comment,
+      user: userId
+    })
+    .then((commnet) => {
+      res.json(commnet)
+      console.log(comment);
+    })
+    .catch(err => console.log(err))
+});

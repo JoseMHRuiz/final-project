@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import AuthService from "./components/auth/AuthService";
 import Contents from "./components/contents/Contents";
 import Landing from "./components/Landing/Landing";
+import Navbar2 from "./components/navbar2/navbar2";
 
 //App es la aplicación base, que se sirve del servicio AuthService para conectar con la bbdd
 class App extends Component {
@@ -64,7 +65,7 @@ class App extends Component {
           <Redirect to="/" />
           <div className="App">
             <header className="App-header">
-              <Navbar
+              <Navbar2
                 userInSession={this.state.loggedInUser}
                 logout={this.logout}
               />{" "}
@@ -89,7 +90,7 @@ class App extends Component {
         <React.Fragment>
           <Redirect to="/" />
           <header className="App-header">
-            <Navbar
+            <Navbar2
               userInSession={this.state.loggedInUser}
               logout={this.logout}
             />{" "}
