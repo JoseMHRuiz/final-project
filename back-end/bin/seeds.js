@@ -11,10 +11,14 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const randomLocation = require('random-location')
 
+const {
+  DBURL,
+  DBDEPLOY
+} = process.env
 
 function dbConnect(cb) {
   mongoose
-    .connect(`${process.env.DBURL}`, {
+    .connect(`${DBURL}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })

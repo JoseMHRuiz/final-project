@@ -13,7 +13,8 @@ const cors = require('cors');
 
 
 const {
-  DBURL
+  DBURL,
+  DBDEPLOY
 } = process.env;
 mongoose.Promise = Promise;
 mongoose

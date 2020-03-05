@@ -1,56 +1,47 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import IndexService from "../../services/IndexService";
-import { Link, Switch, Route } from "react-router-dom";
-import "./Home.scss";
-import BoxDetails from "../BoxDetails/BoxDetails";
+import { Link } from "react-router-dom";
+import "./BoxDetails.scss";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: {},
-      _onlyOne: {}
-    };
-    this._isMounted = false;
-    this._isFetched = false;
-    this.service = new IndexService();
-  }
-  componentDidMount() {
-    this._isMounted = true;
-    this.service.findAll().then(response => {
-      console.log(response);
-      this._isMounted &&
-        this.setState({
-          data: response
-        });
-    });
-  }
-  _onlyOne(id) {
-    this._isFetched = true;
-    const { boxes } = this.state.data;
-    let box = boxes.filter(box => {
-      return box._id === id;
-    });
-    this.setState({
-      _onlyOne: box
-    });
-  }
+class BoxDetails extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     data: {},
+  //     _onlyOne: {}
+  //   };
+  //   this._isMounted = false;
+  //   this._isFetched = false;
+  //   this.service = new IndexService();
+  // }
+  // componentDidMount() {
+  //   this._isMounted = true;
+  //   this.service.findAll().then(response => {
+  //     console.log(response);
+  //     this._isMounted &&
+  //       this.setState({
+  //         data: response
+  //       });
+  //   });
+  // }
+  // _onlyOne(id) {
+  //   this._isFetched = true;
+  //   const { boxes } = this.state.data;
+  //   let box = boxes.filter(box => {
+  //     return box._id === id;
+  //   });
+  //   this.setState({
+  //     _onlyOne: box
+  //   });
+  // }
 
   render() {
-    const { boxes } = this.state.data;
-    if (boxes) {
-      console.log(boxes);
+    const { box } = this.props;
+    if (box) {
+      console.log(box);
       return (
-        <div className="Home">
-          <Switch>
-            <Route
-              exact
-              path="/home/:id"
-              render={() => <BoxDetails box={this._onlyOne}></BoxDetails>}
-            />
-          </Switch>
-          ;
+        <div className="BoxDetails">
           <h3>
             <small>Tabs with Icons on Card</small>
           </h3>
@@ -93,13 +84,13 @@ class Home extends Component {
             <div className="card-body ">
               <div className="tab-content text-center">
                 <div className="tab-pane active" id="profile">
-                  {boxes.map((box, idx) => (
+                  {/* {box.map((box, idx) => (
                     <div key={idx}>
                       <h1>
                         <Link to={box._id}>{box.boxName}</Link>
                       </h1>
                     </div>
-                  ))}
+                  ))} */}
                 </div>
                 <div className="tab-pane" id="messages">
                   <p>
@@ -126,7 +117,7 @@ class Home extends Component {
       );
     } else {
       return (
-        <div className="Home">
+        <div className="BoxDetails">
           <h3>
             <small>Tabs with Icons on Card</small>
           </h3>
@@ -202,4 +193,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default BoxDetails;
