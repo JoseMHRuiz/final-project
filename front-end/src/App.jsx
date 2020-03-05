@@ -108,11 +108,6 @@ class App extends Component {
             <Route exact path="/" render={() => <Landing> </Landing>} />
             <Route
               exact
-              path="/home/box"
-              render={() => <BoxDetails oneBox={_onlyOne}> </BoxDetails>}
-            />
-            <Route
-              exact
               path="/profile"
               render={() => <Profile userInSession={loggedInUser} />}
             />
@@ -125,6 +120,11 @@ class App extends Component {
                   getOneById={id => this._onlyOne(id)}
                 ></Home>
               )}
+            />
+            <Route
+              exact
+              path="/home/box"
+              render={() => <BoxDetails oneBox={_onlyOne}> </BoxDetails>}
             />
           </Switch>
         </React.Fragment>
@@ -149,7 +149,16 @@ class App extends Component {
               render={() => <Login getUser={this.getUser} />}
             />
             <Route exact path="/main" render={() => <Main></Main>} />
-            <Route exact path="/home" render={() => <Home></Home>} />
+            <Route
+              exact
+              path="/home"
+              render={() => (
+                <Home
+                  allBoxes={allBoxes}
+                  getOneById={id => this._onlyOne(id)}
+                ></Home>
+              )}
+            />
             <Route
               exact
               path="/home/box"

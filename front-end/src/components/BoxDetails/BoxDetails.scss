@@ -1,7 +1,36 @@
-.Home {
-    margin: 80px 50px;
+.BoxDetails {
+    margin: 150px 50px;
 
     .card-body {
         min-height: 75vh;
+    }
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    align-content: stretch;
+    min-height: 70vh;
+
+    .mini-data {
+        min-height: 33%;
+        min-width: 100%;
+        background-color: green;
+    }
+
+    .map {
+        min-width: 100%;
+        min-height: 66%;
+
+        background-color: green;
+    }
+
+    .schedule {
+        min-width: 100%;
+        min-height: 33%;
+        background-color: green;
     }
 }
