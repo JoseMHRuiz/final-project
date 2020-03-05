@@ -5,9 +5,9 @@ const User = require('../models/User')
 const Comment = require('../models/Comments')
 const ensureLogin = require("connect-ensure-login");
 /* GET home page */
-router.get('/', (req, res, next) => {
-  res.render('index');
-});
+// router.get('/', (req, res, next) => {
+//   res.render('index');
+// });
 
 module.exports = router;
 

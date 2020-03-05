@@ -37,9 +37,10 @@ class BoxDetails extends Component {
   // }
 
   render() {
-    const { box } = this.props;
-    if (box) {
-      console.log(box);
+    const { finderBox } = this.props;
+    console.log(this.props);
+    if (this.props) {
+      console.log(this.props);
       return (
         <div className="BoxDetails">
           <h3>

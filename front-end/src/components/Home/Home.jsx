@@ -14,42 +14,38 @@ class Home extends Component {
     };
     this._isMounted = false;
     this._isFetched = false;
-    this.service = new IndexService();
+    // this.service = new IndexService();
   }
-  componentDidMount() {
-    this._isMounted = true;
-    this.service.findAll().then(response => {
-      console.log(response);
-      this._isMounted &&
-        this.setState({
-          data: response
-        });
-    });
+  // componentDidMount() {
+  //   this._isMounted = true;
+  //   this.service.findAll().then(response => {
+  //     console.log(response);
+  //     this._isMounted &&
+  //       this.setState({
+  //         data: response
+  //       });
+  //   });
+  // }
+  // _onlyOne(id) {
+  //   // this._isFetched = true;
+  //   const { boxes } = this.state.data;
+  //   let findBox = boxes.filter(function(box) {
+  //     return box._id === id;
+  //   });
+  //   this.setState({
+  //     _onlyOne: findBox
+  //   });
+  // }
+  getOnlyOneBox(boxId) {
+    console.log(boxId);
+    this.props.getOneById(boxId);
   }
-  _onlyOne(id) {
-    this._isFetched = true;
-    const { boxes } = this.state.data;
-    let box = boxes.filter(box => {
-      return box._id === id;
-    });
-    this.setState({
-      _onlyOne: box
-    });
-  }
-
   render() {
-    const { boxes } = this.state.data;
+    const { boxes } = this.props.allBoxes;
     if (boxes) {
       console.log(boxes);
       return (
         <div className="Home">
-          <Switch>
-            <Route
-              exact
-              path="/home/:id"
-              render={() => <BoxDetails box={this._onlyOne}></BoxDetails>}
-            />
-          </Switch>
           ;
           <h3>
             <small>Tabs with Icons on Card</small>
@@ -96,7 +92,16 @@ class Home extends Component {
                   {boxes.map((box, idx) => (
                     <div key={idx}>
                       <h1>
-                        <Link to={box._id}>{box.boxName}</Link>
+                        <Link
+                          to={"home/box"}
+                          onClick={_ => this.getOnlyOneBox(box._id)}
+                        >
+                          {box.boxName}
+                        </Link>
+                        {/* <ListBeers
+                          onlyOneBeer={box => this.getById(id)}
+                          beers={this.state.beers}
+                        /> */}
                       </h1>
                     </div>
                   ))}

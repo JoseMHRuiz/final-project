@@ -4,7 +4,7 @@ import axios from 'axios';
 class IndexService {
     constructor() {
         this.service = axios.create({
-            baseURL: 'http://localhost:4000/',
+            baseURL: `${process.env.REACT_APP_API_URL}`,
             // withCredentials: true
         });
     }

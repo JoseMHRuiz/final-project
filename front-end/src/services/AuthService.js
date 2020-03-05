@@ -4,13 +4,13 @@ import axios from 'axios';
 class AuthService {
   constructor() {
     this.service = axios.create({
-      baseURL: 'http://localhost:4000/api/auth',
+      baseURL: `${process.env.REACT_APP_API_URL}`,
       withCredentials: true
     });
   }
 
   signup = (username, password, email, img) => {
-    return this.service.post('/signup', {
+    return this.service.post('/auth/signup', {
         username,
         password,
         email,
@@ -28,7 +28,7 @@ class AuthService {
   }
 
   login = (username, password) => {
-    return this.service.post('/login', {
+    return this.service.post('/auth/login', {
         username,
         password
       })
@@ -36,14 +36,14 @@ class AuthService {
   }
 
   loggedin = () => {
-    return this.service.get('/currentUser', )
+    return this.service.get('/auth/currentUser', )
       .then((response) =>
         response.data
       )
   }
 
   logout = () => {
-    return this.service.get('/logout', )
+    return this.service.get('/auth/logout', )
       .then(response => response.data)
   }
 }
