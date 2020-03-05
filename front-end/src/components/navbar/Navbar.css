@@ -1,3 +1,7 @@
 .navbar {
     padding: 0.1rem 1rem;
 }
+
+.navbar-color-on-scroll {
+    background-color: rgba(133, 133, 133, 0.639);
+}

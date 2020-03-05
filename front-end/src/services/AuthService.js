@@ -9,12 +9,22 @@ class AuthService {
     });
   }
 
-  signup = (username, password) => {
+  signup = (username, password, email, img) => {
     return this.service.post('/signup', {
         username,
-        password
+        password,
+        email,
+        img
       })
       .then(response => response.data)
+      .catch(error => {
+        if (error.response) {
+          /* the request was made and the server responded
+          with a status code that falls out of the range of 2xx */
+          console.log(error.response.data)
+        }
+        return error.response.data
+      })
   }
 
   login = (username, password) => {
@@ -27,7 +37,9 @@ class AuthService {
 
   loggedin = () => {
     return this.service.get('/currentUser', )
-      .then(response => response.data)
+      .then((response) =>
+        response.data
+      )
   }
 
   logout = () => {

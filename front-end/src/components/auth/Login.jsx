@@ -1,9 +1,9 @@
 // auth/Signup.js
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-import AuthService from "./AuthService";
+import AuthService from "../../services/AuthService";
 import { Link } from "react-router-dom";
-
+import "./Login.scss";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Login">
         {" "}
         <div className="container">
           <div className="row">

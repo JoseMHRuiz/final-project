@@ -1,7 +1,7 @@
 // auth/Signup.js
 import React, { Component } from "react";
-import AuthService from "./AuthService";
-
+import AuthService from "../../services/AuthService";
+import "./Signup.scss";
 import { Link } from "react-router-dom";
 
 //signup y login son iguales a excepción de el html renderizado y el endpoint de nuestra API rest a la que llamamos
@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 class Signup extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", email: "", img: "" };
     this.service = new AuthService();
   }
 
@@ -17,14 +17,20 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    const email = this.state.email;
+    const img = this.state.img;
 
     //aquí llamamos al endpoint /signup de nuestra API Rest usando nuestro AuthService
     this.service
-      .signup(username, password)
+      .signup(username, password, email, img)
       .then(response => {
+        console.log(response);
         this.setState({
           username: "",
-          password: ""
+          password: "",
+          email: "",
+          img: "",
+          error: true
         });
         //aquí elevamos el nuevo usuario una vez creado a App usando getUser via props
         //por tanto, informamos a App de que el nuevo usuario ha sido creado, provocando un re-render
@@ -35,6 +41,8 @@ class Signup extends Component {
         this.setState({
           username: username,
           password: password,
+          email: email,
+          img: img,
           error: true
         });
       });
@@ -47,7 +55,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className="Signup">
         {" "}
         <div className="container">
           <div className="row">
@@ -70,22 +78,28 @@ class Signup extends Component {
                   </div>
                   <p className="description text-center">Or Be classNameical</p>
                   <div className="card-body">
-                    <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
+                    <div className="form-group">
+                      <div className="form-group-prepend">
+                        <span
+                          className={
+                            this.state.error
+                              ? "input-group-text error-class"
+                              : "input-group-text"
+                          }
+                        >
                           <i className="material-icons">face</i>
                         </span>
                       </div>
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control "
                         name="username"
                         value={this.state.username}
                         onChange={e => this.handleChange(e)}
                         placeholder="Username"
                       />
                     </div>
-                    <div className="input-group">
+                    <div className="form-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text">
                           <i className="material-icons">lock_outline</i>
@@ -100,6 +114,21 @@ class Signup extends Component {
                         placeholder="Password"
                       />
                     </div>
+                    <div className="form-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <input
+                        type="email"
+                        name="email"
+                        className="form-control"
+                        value={this.state.email}
+                        onChange={e => this.handleChange(e)}
+                        placeholder="email@email.com"
+                      />
+                    </div>
                   </div>
                   <div className="footer text-center">
                     <input
@@ -107,10 +136,10 @@ class Signup extends Component {
                       value="Signup"
                       className="btn btn-primary btn-link btn-wd btn-lg"
                     />
+                    <Link to="/Login">
+                      <p>Login</p>
+                    </Link>
                   </div>
-                  <Link to="/Login">
-                    <p>Login</p>
-                  </Link>
                 </form>
               </div>
             </div>

@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import "bulma/css/bulma.css";
 import "./App.css";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
-import AuthService from "./components/auth/AuthService";
-import Contents from "./components/contents/Contents";
+import AuthService from "./services/AuthService";
 import Landing from "./components/Landing/Landing";
 import Navbar from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Profile from "./components/Profile/Profile";
+import Home from "./components/Home/Home";
 
 //App es la aplicación base, que se sirve del servicio AuthService para conectar con la bbdd
 class App extends Component {
@@ -56,27 +57,29 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.loggedInUser);
-
+    const { loggedInUser } = this.state;
+    const { logout } = this;
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
-    if (this.state.loggedInUser) {
+    if (loggedInUser) {
       //en este caso mostramos los contenidos ya que hay usuario
       return (
         <React.Fragment>
           <Redirect to="/" />
           <div className="App">
             <header className="App-header">
-              <Navbar
-                userInSession={this.state.loggedInUser}
-                logout={this.logout}
-              />{" "}
+              <Navbar userInSession={loggedInUser} logout={logout} />{" "}
             </header>{" "}
-            {/* <Contents userInSession={this.state.loggedInUser}> </Contents>{" "} */}
+            {/* <Contents userInSession={loggedInUser}> </Contents>{" "} */}
           </div>{" "}
           <Switch>
             {" "}
             <Route exact path="/" render={() => <Landing> </Landing>} />
-            <Route exact path="/profile" render={() => <Profile></Profile>} />
+            <Route
+              exact
+              path="/profile"
+              render={() => <Profile userInSession={loggedInUser} />}
+            />
+            <Route exact path="/home" render={() => <Home></Home>} />
           </Switch>
         </React.Fragment>
       );
@@ -86,10 +89,7 @@ class App extends Component {
         <div className="App">
           <Redirect to="/" />
           <header className="App-header">
-            <Navbar
-              userInSession={this.state.loggedInUser}
-              logout={this.logout}
-            />{" "}
+            <Navbar userInSession={loggedInUser} />{" "}
           </header>{" "}
           <Switch>
             <Route
@@ -103,6 +103,7 @@ class App extends Component {
               render={() => <Login getUser={this.getUser} />}
             />
             <Route exact path="/main" render={() => <Main></Main>} />
+            <Route exact path="/home" render={() => <Home></Home>} />
             <Route
               exact
               path="/"

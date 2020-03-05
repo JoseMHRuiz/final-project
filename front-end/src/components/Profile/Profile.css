@@ -1,0 +1,15 @@
+.Profile {
+    margin-top: 150px;
+}
+
+
+.rounded-circle {
+    max-height: 250px;
+}
+
+/* .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+} */

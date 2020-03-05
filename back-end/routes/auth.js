@@ -26,7 +26,8 @@ router.post('/signup', (req, res, next) => {
 
   const {
     username,
-    password
+    password,
+    email
   } = req.body;
 
   console.log('username', username)
@@ -36,30 +37,41 @@ router.post('/signup', (req, res, next) => {
   if (!username || !password) {
     next(new Error('You must provide valid credentials'));
   }
-
   // Check if user exists in DB
   User.findOne({
       username
     })
     .then(foundUser => {
-      if (foundUser) throw new Error('Username already exists');
+      // if (foundUser) throw new Error('Username already exists');
+      if (foundUser === null) {
+        const salt = bcrypt.genSaltSync(10);
+        const hashPass = bcrypt.hashSync(password, salt);
+        User.create({
+            username,
+            password: hashPass,
+            email,
+          })
+          .then(savedUser => login(req, savedUser)) // Login the user using passport
+          .then(user => res.json({
+            status: 'signup & login successfully',
+            user
+          }));
 
-      const salt = bcrypt.genSaltSync(10);
-      const hashPass = bcrypt.hashSync(password, salt);
+      } else {
+        console.error('User already exist');
+        res.status(401).send('User already exist');
 
-      return new User({
-        username,
-        password: hashPass
-      }).save();
-    })
-    .then(savedUser => login(req, savedUser)) // Login the user using passport
-    .then(user => res.json({
-      status: 'signup & login successfully',
-      user
-    })) // Answer JSON
-    .catch(e => next(e));
-});
+      }
+      // Answer JSON
 
+
+      // return new User({
+      //   username,
+      //   password: hashPass
+      // }).save();
+      // .catch(e => next(e));
+    });
+})
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
 

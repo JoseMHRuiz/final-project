@@ -9,6 +9,10 @@ const userSchema = new Schema({
     enum: ['owner', 'user'],
     default: 'user'
   },
+  img: {
+    type: String,
+    default: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
+  },
   email: String,
   googleID: String,
 }, {

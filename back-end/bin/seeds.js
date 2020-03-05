@@ -32,7 +32,6 @@ dbConnect(() => {
   const city = ['Madrid']
   const area = ['300', '600', '1000']
   const days = [2, 5, 7]
-  const duration = ['30min-1hour', '1-2 hours', '2-3 hours', '3 or more hours']
   const trueFlase = [true, true, false]
   const maxLv = ['L3', 'L4']
   const minLv = ['L1', 'L2']
@@ -63,7 +62,8 @@ dbConnect(() => {
       username: "Admin",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'admin@gmail.com',
-      userType: 'owner'
+      userType: 'owner',
+      img: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
 
     },
     {
@@ -71,34 +71,38 @@ dbConnect(() => {
       username: "User1",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'user1@gmail.com',
+      img: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
     },
     {
       _id: idUser[2],
       username: "User2",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'user2@gmail.com',
+      img: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
     },
     {
       _id: idUser[3],
       username: "User3",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'user3@gmail.com',
+      img: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
     },
     {
       _id: idUser[4],
       username: "User4",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: 'user4@gmail.com',
+      img: 'https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png'
     }
   ]
 
 
-  let imgCityArr = ['https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=3465&q=80',
-    'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80',
-    'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80',
-    'https://images.unsplash.com/photo-1495542779398-9fec7dc7986c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1936&q=80',
-    'https://images.unsplash.com/photo-1514565131-fce0801e5785?ixlib=rb-1.2.1&auto=format&fit=crop&w=2532&q=80',
-    'https://images.unsplash.com/photo-1444723121867-7a241cacace9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80'
+  let imgBoxArr = ['https://images.unsplash.com/photo-1519311965067-36d3e5f33d39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3902&q=80',
+    'https://images.unsplash.com/photo-1517343985841-f8b2d66e010b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80',
+    'https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80',
+    'https://images.unsplash.com/photo-1533681904393-9ab6eee7e408?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80',
+    'https://images.unsplash.com/photo-1556817411-92f5ec899a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80',
+    'https://images.unsplash.com/photo-1533681475364-326b6803d677?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80'
   ]
   const fakeTips = Array(20)
     .fill()
@@ -133,6 +137,7 @@ dbConnect(() => {
         dropBar: faker.random.boolean(),
         juniorClass: faker.random.boolean(),
         kidsClass: faker.random.boolean(),
+        img: [String],
         schedule: {
           mondayToFriday: {
             start: startS[randomInt(0, startS.length - 1)],

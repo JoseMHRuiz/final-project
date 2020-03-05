@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 
 module.exports = router;
 
-// Show cities after params search:
+// Show box after params search:
 router.post("/filter-box", (req, res, next) => {
   const currentUser = req.user;
   console.log(req.body)
@@ -105,7 +105,7 @@ router.post("/filter-box", (req, res, next) => {
     .catch(err => res.json(req.body));
 });
 
-// Show plans after filtering params with city:
+// Show box after filtering params with city:
 router.post("/filter-box/box", (req, res, next) => {
   const currentUser = req.user;
   console.log(req.body)
@@ -191,13 +191,15 @@ router.get('/filter-box/:cityName/boxes', (req, res, next) => {
 // Show all box:
 router.get('/all-box', (req, res, next) => {
   const currentUser = req.user
+  console.log(req.user)
   Box.find({})
     .populate('user')
-    .then(plans => {
+    .then(boxes => {
       let dataPayload = {
-        plans,
+        boxes,
         currentUser
       };
+      console.log(currentUser)
       res.json(dataPayload)
     })
     .catch(err => console.log(err));

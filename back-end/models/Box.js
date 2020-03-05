@@ -19,6 +19,10 @@ const boxSchema = new Schema({
     dropBar: Boolean,
     juniorClass: Boolean,
     kidsClass: Boolean,
+    img: {
+        type: Array,
+        default: ['https://images.unsplash.com/photo-1519311965067-36d3e5f33d39?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3902&q=80']
+    },
     schedule: {
         mondayToFriday: {
             start: String,
