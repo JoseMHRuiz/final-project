@@ -18,9 +18,9 @@ const {
 } = process.env;
 mongoose.Promise = Promise;
 mongoose
-  .connect(DBURL)
+  .connect(DBDEPLOY)
   .then(() => {
-    console.log(`Connected to Mongo on ${DBURL}`)
+    console.log(`Connected to Mongo on ${DBDEPLOY}`)
   }).catch(err => {
     console.error('Error connecting to mongo', err)
   });

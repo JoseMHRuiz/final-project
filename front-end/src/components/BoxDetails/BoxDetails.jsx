@@ -6,8 +6,8 @@ import "./BoxDetails.scss";
 
 function BoxDetails(props) {
   const { oneBox } = props;
+  const box = oneBox[0];
   if (oneBox) {
-    const box = oneBox[0];
     console.log(box);
     return (
       <div className="BoxDetails">
