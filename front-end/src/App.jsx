@@ -10,7 +10,7 @@ import Landing from "./components/Landing/Landing";
 import NavbarCom from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Profile from "./components/Profile/Profile";
-import Home from "./components/Home/Home";
+import Boxes from "./components/Boxes/Boxes";
 import BoxDetails from "./components/BoxDetails/BoxDetails";
 import IndexService from "./services/IndexService";
 
@@ -53,21 +53,21 @@ class App extends Component {
       });
     });
   };
-  _onlyOne(id) {
-    // this._isFetched = true;
-    const { boxes } = this.state.allBoxes;
-    console.log(boxes);
-    console.log(id);
-    let findBox = boxes.filter(box => {
-      console.log(box);
-      console.log(id);
-      return box._id === id;
-    });
-    console.log(findBox);
-    this.setState({
-      _onlyOne: findBox
-    });
-  }
+  // _onlyOne(id) {
+  //   // this._isFetched = true;
+  //   const { boxes } = this.state.allBoxes;
+  //   console.log(boxes);
+  //   console.log(id);
+  //   let findBox = boxes.filter(box => {
+  //     console.log(box);
+  //     console.log(id);
+  //     return box._id === id;
+  //   });
+  //   console.log(findBox);
+  //   this.setState({
+  //     _onlyOne: findBox
+  //   });
+  // }
 
   //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
   fetchUser() {
@@ -89,7 +89,7 @@ class App extends Component {
     const { loggedInUser } = this.state;
     const { logout } = this;
     const { allBoxes } = this.state;
-    const { _onlyOne } = this.state;
+    // const { _onlyOne } = this.state;
     // console.log(this.state);
     //aqui hacemos rendering condicional dependiendo de si tenemos un usuario logeado o no
     if (loggedInUser) {
@@ -105,7 +105,6 @@ class App extends Component {
                 logout={logout}
               />{" "}
             </header>{" "}
-            {/* <Contents userInSession={loggedInUser}> </Contents>{" "} */}
           </div>{" "}
           <Switch>
             {" "}
@@ -117,18 +116,12 @@ class App extends Component {
             />
             <Route
               exact
-              path="/home"
-              render={() => (
-                <Home
-                  allBoxes={allBoxes}
-                  getOneById={id => this._onlyOne(id)}
-                ></Home>
-              )}
+              path="/boxes"
+              render={() => <Boxes allBoxes={allBoxes}></Boxes>}
             />
             <Route
-              exact
-              path="/home/box"
-              render={() => <BoxDetails oneBox={_onlyOne}> </BoxDetails>}
+              path="/boxes/:id"
+              render={props => <BoxDetails {...props} />}
             />
             {/* <Route exact path="/test">
               {" "}
@@ -138,10 +131,8 @@ class App extends Component {
         </React.Fragment>
       );
     } else {
-      //si no estás logeado, mostrar opcionalmente o login o signup
       return (
         <div className="App">
-          <Redirect to="/" />
           <header className="App-header">
             <NavbarCom userInSession={loggedInUser} getUser={this.getUser} />{" "}
           </header>{" "}
@@ -159,18 +150,17 @@ class App extends Component {
             <Route exact path="/main" render={() => <Main></Main>} />
             <Route
               exact
-              path="/home"
+              path="/boxes"
               render={() => (
-                <Home
+                <Boxes
                   allBoxes={allBoxes}
                   getOneById={id => this._onlyOne(id)}
-                ></Home>
+                ></Boxes>
               )}
             />
             <Route
-              exact
-              path="/home/box"
-              render={() => <BoxDetails oneBox={_onlyOne}> </BoxDetails>}
+              path="/boxes/:id"
+              render={props => <BoxDetails {...props} />}
             />
             <Route
               exact
@@ -181,13 +171,7 @@ class App extends Component {
                 </div>
               )}
             />{" "}
-            {/* <Route
-              exact
-              path="/test"
-              render={() => <CustomTabs oneBox={_onlyOne}> </CustomTabs>}
-            /> */}
           </Switch>{" "}
-          <Redirect to="/" />
         </div>
       );
     }

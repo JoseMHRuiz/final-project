@@ -13,6 +13,8 @@ class IndexService {
         return this.service.get('/all-box', )
             .then(response => response.data)
     }
+    getBoxDetails = id => this.service.get(`/filter-box/${id}/details`).then(response => response.data)
+
 }
 
 export default IndexService;
