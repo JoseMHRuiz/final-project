@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.5",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
@@ -11,10 +13,14 @@
     "bootstrap": "^4.4.1",
     "bulma": "^0.8.0",
     "dotenv-cli": "^3.1.0",
+    "jquery": "^3.4.1",
     "node-sass": "^4.13.1",
+    "popper.js": "^1.16.1",
     "react": "^16.13.0",
+    "react-bootstrap": "^0.30.10",
     "react-dom": "^16.13.0",
     "react-google-login": "^5.1.1",
+    "react-router-bootstrap": "^0.25.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0"
   },
@@ -23,7 +29,8 @@
     "build-dev": "dotenv -e .env.dev react-scripts build",
     "build-prod": "dotenv -e .env.prod react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-package-css": "node-sass src/assets/scss/material-kit-react.scss dist/material-kit-react.css"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -12,8 +12,8 @@ class Login extends Component {
       password: ""
     };
     this.service = new AuthService();
+    // console.log(props);
   }
-
   handleFormSubmit = event => {
     event.preventDefault();
     const username = this.state.username;

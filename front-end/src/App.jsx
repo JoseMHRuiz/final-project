@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 // import "bulma/css/bulma.css";
 import "./App.css";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import AuthService from "./services/AuthService";
 import Landing from "./components/Landing/Landing";
-import Navbar from "./components/Navbar/Navbar";
+import NavbarCom from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Profile from "./components/Profile/Profile";
 import Home from "./components/Home/Home";
@@ -99,7 +99,11 @@ class App extends Component {
           <Redirect to="/" />
           <div className="App">
             <header className="App-header">
-              <Navbar userInSession={loggedInUser} logout={logout} />{" "}
+              <NavbarCom
+                userInSession={loggedInUser}
+                getUser={this.getUser}
+                logout={logout}
+              />{" "}
             </header>{" "}
             {/* <Contents userInSession={loggedInUser}> </Contents>{" "} */}
           </div>{" "}
@@ -126,6 +130,10 @@ class App extends Component {
               path="/home/box"
               render={() => <BoxDetails oneBox={_onlyOne}> </BoxDetails>}
             />
+            {/* <Route exact path="/test">
+              {" "}
+              {CustomTabs}
+            </Route> */}
           </Switch>
         </React.Fragment>
       );
@@ -135,7 +143,7 @@ class App extends Component {
         <div className="App">
           <Redirect to="/" />
           <header className="App-header">
-            <Navbar userInSession={loggedInUser} />{" "}
+            <NavbarCom userInSession={loggedInUser} getUser={this.getUser} />{" "}
           </header>{" "}
           <Switch>
             <Route
@@ -173,6 +181,11 @@ class App extends Component {
                 </div>
               )}
             />{" "}
+            {/* <Route
+              exact
+              path="/test"
+              render={() => <CustomTabs oneBox={_onlyOne}> </CustomTabs>}
+            /> */}
           </Switch>{" "}
           <Redirect to="/" />
         </div>

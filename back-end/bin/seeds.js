@@ -18,7 +18,7 @@ const {
 
 function dbConnect(cb) {
   mongoose
-    .connect(`${DBDEPLOY}`, {
+    .connect(`${DBURL}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })
@@ -165,71 +165,83 @@ dbConnect(() => {
           otherCredentials: ['Gymnactics', 'Kids', 'Strongman']
         },
         material: {
-          machines: {
-            airunner: {
+          machines: [{
+              name: 'airunner',
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
               qty: randomInt(0, 12)
             },
-            airbike: {
+            {
+              name: 'airbike',
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
               qty: randomInt(0, 12)
             },
-            skyerg: {
+            {
+              name: 'skyerg',
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
               qty: randomInt(0, 12)
             },
-            bikeerg: {
+            {
+              name: 'bikeerg',
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
               qty: randomInt(0, 12)
             },
-            rowerg: {
+            {
+              name: 'rowerg',
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
               qty: randomInt(0, 12)
             },
-          },
-          dumbell: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          kettlebell: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          medball: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          dball: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          sandbag: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          yoke: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          sleed: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          ghd: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          barbells: {
-            upTo: randomKg[randomInt(0, randomKg.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          foamroller: {
-            upTo: dropInPrices[randomInt(0, dropInPrices.length - 1)],
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
-          band: {
-            have: trueFlase[randomInt(0, trueFlase.length - 1)]
-          },
+          ],
+          rest: [{
+              name: 'dumbbell',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'kettlebell',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'medball',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'dball',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'sandbag',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'yoke',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'sleed',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'ghd',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'barbells',
+              upTo: randomKg[randomInt(0, randomKg.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            },
+            {
+              name: 'foamroller',
+              upTo: dropInPrices[randomInt(0, dropInPrices.length - 1)],
+              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+            }, ,
+          ]
         },
         prices: {
           dropin: dropInPrices[randomInt(0, dropInPrices.length - 1)],

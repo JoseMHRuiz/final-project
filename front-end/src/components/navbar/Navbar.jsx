@@ -3,132 +3,90 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
+import Dropdown from "react-bootstrap/Dropdown";
+import SplitButton from "react-bootstrap/SplitButton";
 
-export default function Navbar(props) {
+import { LinkContainer } from "react-router-bootstrap";
+
+export default function NavbarCom(props) {
+  const [modalShow, setModalShow] = React.useState(false);
+  const { userInSession } = props;
+  const { getUser } = props;
   const handleLogout = e => {
     props.logout();
   };
-  const { userInSession } = props;
+  const handleLogin = e => {
+    getUser();
+  };
   if (userInSession) {
+    console.log(userInSession);
     return (
-      <nav
-        className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
-        color-on-scroll="100"
-        id="sectionsNav"
-      >
-        <div className="container">
-          <div className="navbar-translate">
-            <div className="navbar-brand">SocialBox </div>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="sr-only">Toggle navigation</span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ml-auto">
-              <li className="dropdown nav-item">
-                <div
-                  className="dropdown-toggle nav-link"
-                  data-toggle="dropdown"
+      <>
+        <Navbar sticky="top" bg="transparent" expand="lg">
+          <Navbar.Brand href="#home">SocialBox</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mr-auto">
+              <LinkContainer to="/home">
+                <Nav.Link>Home</Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/main">
+                <Nav.Link>Main</Nav.Link>
+              </LinkContainer>
+              <Nav.Link href="/landing">Landing</Nav.Link>
+            </Nav>
+            <Nav>
+              <ButtonToolbar>
+                <SplitButton
+                  title={userInSession.username}
+                  variant="secundary"
+                  drop="left"
+                  id="dropdown-split-variants-secundary"
                 >
-                  <i className="material-icons">apps</i>{" "}
-                  {userInSession.username}
-                </div>
-                <div className="dropdown-menu dropdown-with-icons">
-                  <span onClick={handleLogout} className="dropdown-item">
-                    <i className="material-icons">layers</i> Logout
-                  </span>
-                  <Link to="/profile" className="dropdown-item">
-                    <i className="material-icons">content_paste</i> Profile
-                  </Link>
-                </div>
-              </li>
-              <Link className="nav-item" to="/home">
-                <div className="nav-link">Home</div>
-              </Link>
-              <Link className="nav-item" to="/main">
-                <div className="nav-link">Main</div>
-              </Link>
-              <Link className="nav-item" to="/">
-                <div className="nav-link">Landing</div>
-              </Link>
-            </ul>
-          </div>
-        </div>
-      </nav>
+                  <LinkContainer to="/profile">
+                    <Dropdown.Item>Profile</Dropdown.Item>
+                  </LinkContainer>
+
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </SplitButton>
+              </ButtonToolbar>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </>
     );
   } else {
     return (
-      <nav
-        className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
-        color-on-scroll="100"
-        id="sectionsNav"
-      >
-        <div className="container">
-          <div className="navbar-translate">
-            <div className="navbar-brand">SocialBox </div>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="sr-only">Toggle navigation</span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div>
-          <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ml-auto">
-              <li className="dropdown nav-item">
-                <span
-                  className="dropdown-toggle nav-link"
-                  data-toggle="dropdown"
-                >
-                  <i className="material-icons">apps</i> Components
-                </span>
-                <div className="dropdown-menu dropdown-with-icons">
-                  <span href="../index.html" className="dropdown-item">
-                    <i className="material-icons">layers</i> All Components
-                  </span>
-                  <span
-                    href="https://demos.creative-tim.com/material-kit/docs/2.1/getting-started/introduction.html"
-                    className="dropdown-item"
-                  >
-                    <i className="material-icons">content_paste</i>{" "}
-                    Documentation
-                  </span>
-                </div>
-              </li>
-              <Link className="nav-item default" to="/home">
-                <div className="nav-link">Home</div>
-              </Link>
-              <Link className="nav-item" to="/main">
-                <div className="nav-link">Main</div>
-              </Link>
-              <Link className="nav-item" to="/">
-                <div className="nav-link">Landing</div>
-              </Link>
-              <Link className="nav-item" to="/signup">
-                <div className="nav-link">SignUp</div>
-              </Link>
-              <Link className="nav-item" to="/login">
-                <div className="nav-link">Login</div>
-              </Link>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar sticky="top" bg="transparent" expand="lg">
+        <Navbar.Brand href="#home">SocialBox</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <LinkContainer to="/home">
+              <Nav.Link>Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/main">
+              <Nav.Link>Main</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/landing">
+              <Nav.Link>Landing</Nav.Link>
+            </LinkContainer>
+            <Nav.Link variant="primary" onClick={() => setModalShow(true)}>
+              Login
+            </Nav.Link>
+            <LinkContainer to="/signup">
+              <Nav.Link>Signup</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/login">
+              <Nav.Link>Login</Nav.Link>
+            </LinkContainer>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
