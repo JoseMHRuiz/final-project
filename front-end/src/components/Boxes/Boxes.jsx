@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./Boxes.scss";
 import BoxDetails from "../BoxDetails/BoxDetails";
 import BoxCard from "../BoxCard/BoxCard";
+import { Container } from "@material-ui/core";
 
 function Boxes(props) {
   const { boxes } = props.allBoxes;
@@ -12,9 +13,6 @@ function Boxes(props) {
     console.log(boxes);
     return (
       <div className="Boxes">
-        <h3>
-          <small>Tabs with Icons on Card</small>
-        </h3>
         <div className="card card-nav-tabs">
           <div className="card-header card-header-primary">
             <div className="nav-tabs-navigation">
@@ -46,10 +44,11 @@ function Boxes(props) {
           <div className="card-body ">
             <div className="tab-content text-center">
               <div className="tab-pane active" id="profile">
-                {boxes.map(box => (
-                  // <BoxDetails key={box._id} {...box}/>
-                  <BoxCard key={box._id} {...box} />
-                ))}
+                <div className="cont-box-card">
+                  {boxes.map(box => (
+                    <BoxCard key={box._id} {...box} />
+                  ))}
+                </div>
               </div>
               <div className="tab-pane" id="messages">
                 <p>

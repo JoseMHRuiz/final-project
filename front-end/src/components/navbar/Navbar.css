@@ -1,7 +1,8 @@
 .navbar {
-    padding: 0.1rem 1rem;
+  padding: 0.1rem 1rem;
+  background-color: rgba(82, 80, 80, 0.673);
 }
 
-.navbar-color-on-scroll {
-    background-color: rgba(133, 133, 133, 0.639);
+nav.navbar-color-on-scroll {
+  background-color: rgba(133, 133, 133, 0.639);
 }

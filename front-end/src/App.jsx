@@ -98,13 +98,11 @@ class App extends Component {
         <React.Fragment>
           <Redirect to="/" />
           <div className="App">
-            <header className="App-header">
-              <NavbarCom
-                userInSession={loggedInUser}
-                getUser={this.getUser}
-                logout={logout}
-              />{" "}
-            </header>{" "}
+            <NavbarCom
+              userInSession={loggedInUser}
+              getUser={this.getUser}
+              logout={logout}
+            />{" "}
           </div>{" "}
           <Switch>
             {" "}
@@ -133,9 +131,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <header className="App-header">
-            <NavbarCom userInSession={loggedInUser} getUser={this.getUser} />{" "}
-          </header>{" "}
+          <NavbarCom userInSession={loggedInUser} getUser={this.getUser} />{" "}
           <Switch>
             <Route
               exact

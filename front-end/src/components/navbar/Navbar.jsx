@@ -24,50 +24,48 @@ export default function NavbarCom(props) {
   if (userInSession) {
     console.log(userInSession);
     return (
-      <>
-        <Navbar sticky="top" bg="transparent" expand="lg">
-          <Navbar.Brand href="#home">SocialBox</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <LinkContainer to="/home">
-                <Nav.Link>Home</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/main">
-                <Nav.Link>Main</Nav.Link>
-              </LinkContainer>
-              <Nav.Link href="/landing">Landing</Nav.Link>
-            </Nav>
-            <Nav>
-              <ButtonToolbar>
-                <SplitButton
-                  title={userInSession.username}
-                  variant="secundary"
-                  drop="left"
-                  id="dropdown-split-variants-secundary"
-                >
-                  <LinkContainer to="/profile">
-                    <Dropdown.Item>Profile</Dropdown.Item>
-                  </LinkContainer>
+      <Navbar className="navbar" sticky="top" variant="dark" expand="md">
+        <Navbar.Brand>SocialBox</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
+            <LinkContainer to="/boxes">
+              <Nav.Link>Boxes</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/main">
+              <Nav.Link>Main</Nav.Link>
+            </LinkContainer>
+            <Nav.Link href="/landing">Landing</Nav.Link>
+          </Nav>
+          <Nav>
+            <ButtonToolbar>
+              <SplitButton
+                title={userInSession.username}
+                variant="secundary"
+                drop="left"
+                id="dropdown-split-variants-secundary"
+              >
+                <LinkContainer to="/profile">
+                  <Dropdown.Item>Profile</Dropdown.Item>
+                </LinkContainer>
 
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-                </SplitButton>
-              </ButtonToolbar>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-      </>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+              </SplitButton>
+            </ButtonToolbar>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   } else {
     return (
-      <Navbar sticky="top" bg="transparent" expand="lg">
+      <Navbar className="navbar" sticky="top" variant="dark" expand="md">
         <Navbar.Brand href="#home">SocialBox</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/home">
-              <Nav.Link>Home</Nav.Link>
+            <LinkContainer to="/boxes">
+              <Nav.Link>Boxes</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/main">
               <Nav.Link>Main</Nav.Link>
