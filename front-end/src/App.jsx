@@ -13,6 +13,7 @@ import Profile from "./components/Profile/Profile";
 import Boxes from "./components/Boxes/Boxes";
 import BoxDetails from "./components/BoxDetails/BoxDetails";
 import IndexService from "./services/IndexService";
+import Search from "./components/Search/Search";
 
 //App es la aplicación base, que se sirve del servicio AuthService para conectar con la bbdd
 class App extends Component {
@@ -53,22 +54,6 @@ class App extends Component {
       });
     });
   };
-  // _onlyOne(id) {
-  //   // this._isFetched = true;
-  //   const { boxes } = this.state.allBoxes;
-  //   console.log(boxes);
-  //   console.log(id);
-  //   let findBox = boxes.filter(box => {
-  //     console.log(box);
-  //     console.log(id);
-  //     return box._id === id;
-  //   });
-  //   console.log(findBox);
-  //   this.setState({
-  //     _onlyOne: findBox
-  //   });
-  // }
-
   //este método vuelca la información del usuario y lo guarda en el state de app que siempre puedes revisitar
   fetchUser() {
     return this.service
@@ -96,7 +81,6 @@ class App extends Component {
       //en este caso mostramos los contenidos ya que hay usuario
       return (
         <React.Fragment>
-          <Redirect to="/" />
           <div className="App">
             <NavbarCom
               userInSession={loggedInUser}
@@ -119,7 +103,9 @@ class App extends Component {
             />
             <Route
               path="/boxes/:id"
-              render={props => <BoxDetails {...props} />}
+              render={props => (
+                <BoxDetails userInSession={loggedInUser} {...props} />
+              )}
             />
             {/* <Route exact path="/test">
               {" "}
@@ -167,6 +153,12 @@ class App extends Component {
                 </div>
               )}
             />{" "}
+            <Route
+              path="/box/search/:box"
+              render={match => (
+                <Search {...match} loggedInUser={this.state.loggedInUser} />
+              )}
+            />
           </Switch>{" "}
         </div>
       );

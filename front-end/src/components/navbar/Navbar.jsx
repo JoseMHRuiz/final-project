@@ -8,6 +8,8 @@ import Nav from "react-bootstrap/Nav";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import SplitButton from "react-bootstrap/SplitButton";
+import SearchInput from "../Search/SearchInput";
+import SearchStyled from "../Search/SearchStyled";
 
 import { LinkContainer } from "react-router-bootstrap";
 
@@ -38,6 +40,7 @@ export default function NavbarCom(props) {
             <Nav.Link href="/landing">Landing</Nav.Link>
           </Nav>
           <Nav>
+            <SearchInput></SearchInput>
             <ButtonToolbar>
               <SplitButton
                 title={userInSession.username}
@@ -73,15 +76,16 @@ export default function NavbarCom(props) {
             <LinkContainer to="/landing">
               <Nav.Link>Landing</Nav.Link>
             </LinkContainer>
-            <Nav.Link variant="primary" onClick={() => setModalShow(true)}>
-              Login
-            </Nav.Link>
             <LinkContainer to="/signup">
               <Nav.Link>Signup</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
+          </Nav>
+          <Nav>
+            {/* <SearchStyled></SearchStyled> */}
+            <SearchInput></SearchInput>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

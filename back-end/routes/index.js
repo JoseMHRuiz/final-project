@@ -1,8 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Box = require('../models/Box')
-const User = require('../models/User')
-const Comment = require('../models/Comments')
+const Box = require("../models/Box");
+const User = require("../models/User");
+const Comment = require("../models/Comments");
 const ensureLogin = require("connect-ensure-login");
 /* GET home page */
 // router.get('/', (req, res, next) => {
@@ -14,7 +14,7 @@ module.exports = router;
 // Show box after params search:
 router.post("/filter-box", (req, res, next) => {
   const currentUser = req.user;
-  console.log(req.body)
+  console.log(req.body);
   // console.log(req.user)
   const {
     dropBar,
@@ -23,7 +23,7 @@ router.post("/filter-box", (req, res, next) => {
     kidsClass,
     affiliate,
     saturdayOpen,
-    sundayOpen,
+    sundayOpen
   } = req.body;
   // arrTagsWanted = tagsWanted.split(',');
   // arrTagsNotWanted = tagsNotWanted.split(',');
@@ -31,37 +31,46 @@ router.post("/filter-box", (req, res, next) => {
   // tripBudget = budget;
 
   Box.find({
-      $and: [{
+    $and: [
+      {
         dropBar: {
           $eq: dropBar
         }
-      }, {
+      },
+      {
         openBox: {
           $eq: openBox
         }
-      }, {}, {
+      },
+      {},
+      {
         juniorClass: {
           $eq: juniorClass
         }
-      }, {
+      },
+      {
         kidsClass: {
           $eq: kidsClass
         }
-      }, {
+      },
+      {
         affiliate: {
           $eq: affiliate
         }
-      }, {
+      },
+      {
         "schedule.saturday.open": {
           $eq: saturdayOpen
         }
-      }, {
+      },
+      {
         "schedule.sunday.open": {
           $eq: sundayOpen
         }
-      }]
-    })
-    .populate('user')
+      }
+    ]
+  })
+    .populate("user")
     .then(data => {
       let numberOfBoxes = {};
       let cities = data.map(box => (box = box.city));
@@ -78,7 +87,7 @@ router.post("/filter-box", (req, res, next) => {
       for (city in numberOfBoxes) {
         defCities.forEach(city1 => {
           if (city1.name === city) {
-            city1.total = numberOfBoxes[city]
+            city1.total = numberOfBoxes[city];
           }
         });
       }
@@ -90,7 +99,7 @@ router.post("/filter-box", (req, res, next) => {
         kidsClass,
         affiliate,
         saturdayOpen,
-        sundayOpen,
+        sundayOpen
       };
       let dataPayload = {
         defCities,
@@ -98,9 +107,7 @@ router.post("/filter-box", (req, res, next) => {
         currentUser
       };
 
-      res.json(
-        dataPayload
-      );
+      res.json(dataPayload);
     })
     .catch(err => res.json(req.body));
 });
@@ -108,7 +115,7 @@ router.post("/filter-box", (req, res, next) => {
 // Show box after filtering params with city:
 router.post("/filter-box/box", (req, res, next) => {
   const currentUser = req.user;
-  console.log(req.body)
+  console.log(req.body);
   const {
     cityName,
     dropBar,
@@ -117,7 +124,7 @@ router.post("/filter-box/box", (req, res, next) => {
     kidsClass,
     affiliate,
     saturdayOpen,
-    sundayOpen,
+    sundayOpen
   } = req.body;
   // arrTagsWanted = tagsWanted.split(',');
   // arrTagsNotWanted = tagsNotWanted.split(',');
@@ -125,100 +132,134 @@ router.post("/filter-box/box", (req, res, next) => {
   // tripBudget = budget;
 
   Box.find({
-      $and: [{
+    $and: [
+      {
         city: cityName
-      }, {
+      },
+      {
         dropBar: {
           $eq: dropBar
         }
-      }, {
+      },
+      {
         openBox: {
           $eq: openBox
         }
-      }, {}, {
+      },
+      {},
+      {
         juniorClass: {
           $eq: juniorClass
         }
-      }, {
+      },
+      {
         kidsClass: {
           $eq: kidsClass
         }
-      }, {
+      },
+      {
         affiliate: {
           $eq: affiliate
         }
-      }, {
+      },
+      {
         "schedule.saturday.open": {
           $eq: saturdayOpen
         }
-      }, {
+      },
+      {
         "schedule.sunday.open": {
           $eq: sundayOpen
         }
-      }]
-    })
-    .populate('user')
+      }
+    ]
+  })
+    .populate("user")
     .then(box => {
       let dataPayload = {
         box,
         currentUser
       };
-      console.log(box);
-      res.json(dataPayload)
+      res.json(dataPayload);
     })
     .catch(err => console.log(err));
 });
 
+//findBoxes
+router.get("/search/:box", (req, res, next) => {
+  Box.find({
+    $or: [
+      { boxName: new RegExp(req.params.box, "gi") },
+      { city: new RegExp(req.params.box, "gi") }
+    ]
+  })
+    .then(Box => {
+      res.json(Box);
+    })
+    .catch(err => console.log(err));
+});
 
 //Filter box by city
-router.get('/filter-box/:cityName/boxes', (req, res, next) => {
+router.get("/filter-box/:cityName/boxes", (req, res, next) => {
   const currentUser = req.user;
-  console.log(req.params.cityName)
+  console.log(req.params.cityName);
   Box.find({
-      "city": req.params.cityName
-    })
-    .populate('user')
+    city: req.params.cityName
+  })
+    .populate("user")
     .then(boxes => {
       let dataPayload = {
         boxes,
         currentUser
       };
-      res.json(dataPayload)
+      res.json(dataPayload);
     })
     .catch(err => console.log(err));
 });
 
 // Show all box:
-router.get('/all-box', (req, res, next) => {
-  const currentUser = req.user
-  console.log(req.user)
+router.get("/all-box", (req, res, next) => {
+  const currentUser = req.user;
   Box.find({})
-    .populate('user')
+    .populate("user")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "user",
+        model: "User"
+      }
+    })
+
     .then(boxes => {
       let dataPayload = {
         boxes,
         currentUser
       };
-      console.log(currentUser)
-      res.json(dataPayload)
+      res.json(dataPayload);
     })
     .catch(err => console.log(err));
 });
 
-
 // Show details of specific plan:
 let idBoxDetails;
-router.get('/filter-box/:idBox/details', (req, res, next) => {
-  idBoxDetails = req.params.idBox
+router.get("/filter-box/:idBox/details", (req, res, next) => {
+  idBoxDetails = req.params.idBox;
   const currentUser = req.user;
   Box.findById(idBoxDetails)
-    .populate('user')
+    .populate("user")
+    .populate({
+      path: "comments",
+      populate: {
+        path: "user",
+        model: "User"
+      }
+    })
     .then(boxDetails => {
       let dataPayload = {
         boxDetails,
         currentUser
       };
-      res.json(dataPayload)
+      res.json(dataPayload);
     })
     .catch(err => console.log(err));
 });
@@ -232,56 +273,77 @@ router.get('/filter-box/:idBox/details', (req, res, next) => {
 // });
 
 // Show user's profile page:  ensureLogin.ensureLoggedIn(),
-router.get('/users/:id', (req, res, next) => {
+router.get("/users/:id", (req, res, next) => {
   const currentUser = req.user;
-  const userParams = req.params.id
+  const userParams = req.params.id;
 
   User.findById(userParams)
     .then(user => {
-      let userFound = user
+      let userFound = user;
       Comment.find({
-          user: user._id
-        })
-        .then(userComments => {
-          let owner;
-          currentUser ?
-            userFound.id === currentUser.id ?
-            owner = true :
-            owner = false :
-            owner = false
-          let dataPayload;
-          if (userComments.length === 0) {
-            dataPayload = {
-              userFound,
-              currentUser,
-              owner
-            };
-          } else {
-            dataPayload = {
-              userFound,
-              userComments,
-              currentUser,
-              owner
-            };
-          }
-          res.json(dataPayload)
-        });
+        user: user._id
+      }).then(userComments => {
+        let owner;
+        currentUser
+          ? userFound.id === currentUser.id
+            ? (owner = true)
+            : (owner = false)
+          : (owner = false);
+        let dataPayload;
+        if (userComments.length === 0) {
+          dataPayload = {
+            userFound,
+            currentUser,
+            owner
+          };
+        } else {
+          dataPayload = {
+            userFound,
+            userComments,
+            currentUser,
+            owner
+          };
+        }
+        res.json(dataPayload);
+      });
     })
     .catch(err => console.log(err));
 });
-//ensureLogin.ensureLoggedIn(),
-//addComment
-router.post('/addComment', (req, res, next) => {
-  let userId = req.user._id;
+
+//add comment to the database and push the id to the user and box
+router.post("/addComment", (req, res, next) => {
   // let userId = req.body._id;
-  let comment = req.body.comment;
+  let comment = req.body.commentForm;
+  let boxId = req.body.boxId;
+  let userId = req.body.user._id;
+  let commentId;
+
   Comment.create({
-      comment: comment,
-      user: userId
+    comment: comment,
+    user: userId
+  })
+    .then(comment => {
+      return (commentId = comment._id);
     })
-    .then((commnet) => {
-      res.json(commnet)
-      console.log(comment);
-    })
-    .catch(err => console.log(err))
+    .then(comment =>
+      User.updateOne(
+        { _id: userId },
+        {
+          $push: {
+            comments: comment._id
+          }
+        }
+      )
+    )
+    .then(() =>
+      Box.updateOne(
+        { _id: boxId },
+        {
+          $push: {
+            comments: commentId
+          }
+        }
+      )
+    )
+    .catch(err => console.log(err));
 });

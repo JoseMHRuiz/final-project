@@ -32,7 +32,7 @@ function dbConnect(cb) {
 }
 
 dbConnect(() => {
-  let counter = 0;
+  let counter = -1;
   const city = ["Madrid"];
   const area = ["300", "600", "1000"];
   const days = [2, 5, 7];
@@ -59,6 +59,16 @@ dbConnect(() => {
     .map(() => {
       return new mongoose.mongo.ObjectId();
     });
+  const idBox = Array(50)
+    .fill()
+    .map(() => {
+      return new mongoose.mongo.ObjectId();
+    });
+  const idComment = Array(100)
+    .fill()
+    .map(() => {
+      return new mongoose.mongo.ObjectId();
+    });
 
   let users = [
     {
@@ -67,6 +77,7 @@ dbConnect(() => {
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: "admin@gmail.com",
       userType: "owner",
+      comments: idComment.slice(0, 9),
       img:
         "https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png"
     },
@@ -75,6 +86,7 @@ dbConnect(() => {
       username: "User1",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: "user1@gmail.com",
+      comments: idComment.slice(10, 19),
       img:
         "https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png"
     },
@@ -83,6 +95,7 @@ dbConnect(() => {
       username: "User2",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: "user2@gmail.com",
+      comments: idComment.slice(20, 29),
       img:
         "https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png"
     },
@@ -91,6 +104,7 @@ dbConnect(() => {
       username: "User3",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: "user3@gmail.com",
+      comments: idComment.slice(30, 39),
       img:
         "https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png"
     },
@@ -99,6 +113,7 @@ dbConnect(() => {
       username: "User4",
       password: bcrypt.hashSync("123", bcrypt.genSaltSync(bcryptSalt)),
       email: "user4@gmail.com",
+      comments: idComment.slice(40, 49),
       img:
         "https://res.cloudinary.com/josemhruiz/image/upload/v1583357366/Sin-ti%CC%81tulo-1_rsfpe9.png"
     }
@@ -112,6 +127,17 @@ dbConnect(() => {
     "https://images.unsplash.com/photo-1556817411-92f5ec899a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80",
     "https://images.unsplash.com/photo-1533681475364-326b6803d677?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80"
   ];
+  const fakeComment = Array(100)
+    .fill()
+    .map(() => {
+      counter++;
+      console.log(counter);
+      return {
+        _id: idComment[counter],
+        comment: faker.lorem.sentence(),
+        user: idUser[randomInt(0, 4)]
+      };
+    });
   const fakeTips = Array(20)
     .fill()
     .map(() => {
@@ -122,19 +148,19 @@ dbConnect(() => {
       };
     });
   randomLocation.randomCirclePoint(Madrid, R);
-  const fakeComment = Array(100)
-    .fill()
-    .map(() => {
-      return {
-        comment: faker.lorem.sentence(),
-        user: idUser[randomInt(0, idUser.length - 1)]
-      };
-    });
+
+  counter = -2;
+  let counter2 = 0;
   const fakeBox = Array(50)
     .fill()
     .map(() => {
+      counter += 2;
+      counter2 += 2;
+      console.log(counter);
       daysCounter = days[randomInt(0, days.length - 1)];
       return {
+        _id: idBox[counter],
+        comments: idComment.slice(counter, counter2),
         boxName: faker.name.jobTitle(),
         affiliate: trueFlase[randomInt(0, trueFlase.length - 1)],
         area: area[randomInt(0, area.length - 1)],

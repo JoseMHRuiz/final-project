@@ -1,112 +1,104 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const User = require('../models/User');
-const passport = require('passport');
-
+const bcrypt = require("bcrypt");
+const User = require("../models/User");
+const passport = require("passport");
 
 const login = (req, user) => {
   return new Promise((resolve, reject) => {
     req.login(user, err => {
-      console.log('req.login ')
-      console.log(user)
-
+      console.log("req.login ");
+      console.log(user);
 
       if (err) {
-        reject(new Error('Something went wrong'))
+        reject(new Error("Something went wrong"));
       } else {
         resolve(user);
       }
-    })
-  })
-}
+    });
+  });
+};
 
 // SIGNUP
-router.post('/signup', (req, res, next) => {
+router.post("/signup", (req, res, next) => {
+  const { username, password, email } = req.body;
 
-  const {
-    username,
-    password,
-    email
-  } = req.body;
-
-  console.log('username', username)
-  console.log('password', password)
+  console.log("username", username);
+  console.log("password", password);
 
   // Check for non empty user or password
   if (!username || !password) {
-    next(new Error('You must provide valid credentials'));
+    next(new Error("You must provide valid credentials"));
   }
   // Check if user exists in DB
   User.findOne({
-      username
-    })
-    .then(foundUser => {
-      // if (foundUser) throw new Error('Username already exists');
-      if (foundUser === null) {
-        const salt = bcrypt.genSaltSync(10);
-        const hashPass = bcrypt.hashSync(password, salt);
-        User.create({
-            username,
-            password: hashPass,
-            email,
-          })
-          .then(savedUser => login(req, savedUser)) // Login the user using passport
-          .then(user => res.json({
-            status: 'signup & login successfully',
+    username
+  }).then(foundUser => {
+    // if (foundUser) throw new Error('Username already exists');
+    if (foundUser === null) {
+      const salt = bcrypt.genSaltSync(10);
+      const hashPass = bcrypt.hashSync(password, salt);
+      User.create({
+        username,
+        password: hashPass,
+        email
+      })
+        .then(savedUser => login(req, savedUser)) // Login the user using passport
+        .then(user =>
+          res.json({
+            status: "signup & login successfully",
             user
-          }));
-
-      } else {
-        console.error('User already exist');
-        res.status(401).send('User already exist');
-
-      }
-      // Answer JSON
-
-
-      // return new User({
-      //   username,
-      //   password: hashPass
-      // }).save();
-      // .catch(e => next(e));
-    });
-})
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, theUser, failureDetails) => {
-
+          })
+        );
+    } else {
+      console.error("User already exist");
+      res.status(401).send("User already exist");
+    }
+    // Answer JSON
+  });
+});
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", (err, theUser, failureDetails) => {
     // Check for errors
-    if (err) next(new Error('Something went wrong'));
-    if (!theUser) next(failureDetails)
+    if (err) next(new Error("Something went wrong"));
+    if (!theUser) next(failureDetails);
 
     // Return user and logged in
     login(req, theUser).then(user => res.status(200).json(req.user));
-
   })(req, res, next);
 });
 
-
-router.get('/currentuser', (req, res, next) => {
+router.get("/currentuser", (req, res, next) => {
   if (req.user) {
-    res.status(200).json(req.user);
+    // console.log(req.user);
+    User.findById(req.user._id)
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+          model: "User"
+        }
+      })
+      .then(user => {
+        console.log(user);
+        res.status(200).json(user);
+      });
   } else {
-    next(new Error('Not logged in'))
+    next(new Error("Not logged in"));
   }
-})
-
-
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.status(200).json({
-    message: 'logged out'
-  })
 });
 
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.status(200).json({
+    message: "logged out"
+  });
+});
 
 router.use((err, req, res, next) => {
   res.status(500).json({
     message: err.message
   });
-})
+});
 
 module.exports = router;

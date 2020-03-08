@@ -1,19 +1,18 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import getBoxDetails from "../../services/IndexService";
-// import { Link } from "react-router-dom";
 import "./BoxDetails.scss";
-import Button from "react-bootstrap/Button";
-import Badge from "react-bootstrap/Badge";
 import Card from "react-bootstrap/Card";
+import SimpleMap from "../Maps/Map";
+import CardMaterial from "./CardMaterial/CardMaterial";
+import CardComment from "./CommentsContainer/CardComment/CardComment";
+import CommentsContainer from "./CommentsContainer/CommentsContainer";
+import CommentInput from "./CardMaterial/CommentInput/CommentInput";
 
 class BoxDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { box: {} };
     this.services = new getBoxDetails();
-
-    console.log("las props por defecto serían estas:", this.props.match);
   }
 
   componentDidMount = () => this.getBoxDetails();
@@ -25,12 +24,13 @@ class BoxDetails extends Component {
       .catch(err => console.log(err));
   };
   render() {
-    console.log(this.state);
     if (this.state.box.boxDetails) {
       const { boxDetails } = this.state.box;
       const machinesArr = boxDetails.material.machines;
+      const commentsObj = boxDetails.comments;
+      const { userInSession } = this.props;
+      console.log(this.props);
       const restArr = boxDetails.material.rest;
-      console.log(this.state);
       return (
         <div className="BoxDetails">
           <div className="card card-nav-tabs">
@@ -48,22 +48,27 @@ class BoxDetails extends Component {
                       </a>
                     </li>
                     <li className="nav-item">
-                      <a
-                        className="nav-link"
-                        href="#messages"
-                        data-toggle="tab"
-                      >
+                      <a className="nav-link" href="#coaches" data-toggle="tab">
                         <i className="material-icons">face</i> Coaches
                       </a>
                     </li>
                     <li className="nav-item">
                       <a
                         className="nav-link"
-                        href="#settings"
+                        href="#material"
                         data-toggle="tab"
                       >
                         <i className="material-icons">fitness_center</i>{" "}
                         Material
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a
+                        className="nav-link"
+                        href="#messages"
+                        data-toggle="tab"
+                      >
+                        <i className="material-icons">chat</i> Messages
                       </a>
                     </li>
                     <li className="nav-item">
@@ -78,12 +83,14 @@ class BoxDetails extends Component {
                 <div className="tab-pane active" id="profile">
                   <div className="row">
                     <Card className="col data">
-                      <div className="map">map</div>
+                      <div className="map">
+                        <SimpleMap pos={boxDetails.position} marker={true} />
+                      </div>
+                      <h4>Schedule</h4>
                       <div className="schedule">
-                        <h3>Schedule</h3>
                         <div>
                           <div>
-                            <h4>Monday-Friday</h4>
+                            <h5>Monday-Friday</h5>
                             <small>
                               {boxDetails.schedule.mondayToFriday.start}
                             </small>
@@ -101,7 +108,7 @@ class BoxDetails extends Component {
                             <small>{boxDetails.schedule.saturday.end}</small>
                           </div>
                           <div>
-                            <h5>Saturday</h5>
+                            <h5>Sunday</h5>
                             <small>{boxDetails.schedule.sunday.start}</small>
                             {"-"}
                             <small>{boxDetails.schedule.sunday.end}</small>
@@ -110,54 +117,12 @@ class BoxDetails extends Component {
                       </div>
                     </Card>
                     <Card className="col data">
-                      <div className="mini-data row">
-                        <div className="col">
-                          <h3>Machines</h3>
-                          {machinesArr.map((machine, idx) => (
-                            <div idx={machine}>
-                              {" "}
-                              <Card className="flexprop" variant="primary">
-                                {machine.name} :{"  "}
-                                <div variant="light">
-                                  {machine.have === true ? (
-                                    machine.qty
-                                  ) : (
-                                    <i className="material-icons icondata">
-                                      not_interested
-                                    </i>
-                                  )}
-                                </div>
-                              </Card>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="col">
-                          <h3>Material</h3>
-                          {restArr.map((rest, idx) => (
-                            <div idx={rest}>
-                              {" "}
-                              <Card className="flexprop" variant="primary">
-                                {rest.name} :{"  "}
-                                <div variant="light">
-                                  {rest.have === true ? (
-                                    rest.upTo
-                                  ) : (
-                                    <i className="material-icons icondata">
-                                      not_interested
-                                    </i>
-                                  )}
-                                </div>
-                              </Card>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
                       <div className="mini-data">test2</div>
                       <div className="mini-data">test3</div>
                     </Card>
                   </div>
                 </div>
-                <div className="tab-pane" id="messages">
+                <div className="tab-pane" id="coaches">
                   <p>
                     {" "}
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -167,13 +132,33 @@ class BoxDetails extends Component {
                     reprehenderit quia!
                   </p>
                 </div>
-                <div className="tab-pane" id="settings">
-                  <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Fugiat aliquid iusto illo et sed culpa possimus explicabo
-                    libero nostrum! Mollitia fuga fugit cumque blanditiis amet
-                    minus quae distinctio commodi deserunt.
-                  </p>
+                <div className="tab-pane" id="material">
+                  <div className="mini-data row">
+                    <div className="col">
+                      <h3>Machines</h3>
+                      {machinesArr.map(machine => (
+                        <CardMaterial
+                          key={machine.name}
+                          {...machine}
+                        ></CardMaterial>
+                      ))}
+                    </div>
+                    <div className="col">
+                      <h3>Material</h3>
+                      {restArr.map(rest => (
+                        <CardMaterial key={rest.name} {...rest} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div className="tab-pane" id="messages">
+                  <CommentInput
+                    userInSession={userInSession}
+                    boxId={boxDetails._id}
+                  />
+                  <CommentsContainer
+                    commentsArrDetails={commentsObj}
+                  ></CommentsContainer>
                 </div>
               </div>
             </div>
