@@ -1,3 +1,6 @@
 .navbar-color-on-scroll {
-    background-color: rgba(133, 133, 133, 0.639);
+  background-color: rgba(133, 133, 133, 0.639);
+}
+.row {
+  margin-left: 0;
 }

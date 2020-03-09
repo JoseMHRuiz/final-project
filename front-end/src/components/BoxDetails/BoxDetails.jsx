@@ -8,6 +8,7 @@ import CommentsContainerDetail from "./CommentsContainer/CommentsContainerDetail
 import CommentInput from "./CommentsContainer/CommentInput";
 import IndexService from "../../services/IndexService";
 import BasicInfoContainer from "./BasicInfo/BasicInfo";
+import BasicInfoContainerCoach from "./BasicInfo/BasicInfoCoach";
 
 class BoxDetails extends Component {
   constructor(props) {
@@ -26,7 +27,6 @@ class BoxDetails extends Component {
       })
       .catch(err => console.log(err));
   };
-
   postComment = data => {
     const { userInSession } = this.props;
     const { id } = this.props.match.params;
@@ -126,11 +126,14 @@ class BoxDetails extends Component {
                       </div>
                     </Card>
                     <Card className="col data">
-                      <div className="mini-data row">
-                        <h3>Basic Info</h3>
+                      <div className="mini-data">
+                        <h3>Basic</h3>
                         <BasicInfoContainer {...boxDetails} />
                       </div>
-                      <div className="mini-data">test3</div>
+                      <div className="mini-data">
+                        <h3>Coaches</h3>
+                        <BasicInfoContainerCoach {...boxDetails} />
+                      </div>
                     </Card>
                   </div>
                 </div>

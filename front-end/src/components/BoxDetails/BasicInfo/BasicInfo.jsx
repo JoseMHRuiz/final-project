@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Card from "react-bootstrap/Card";
+import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,9 +10,17 @@ const useStyles = makeStyles(theme => ({
     margin: "2%"
   },
   paper: {
-    height: 100,
-    width: 250,
-    margin: "0.5%"
+    width: 200,
+    margin: "0.5%",
+    marginBottom: 0,
+    background:
+      "linear-gradient(45deg, rgb(172, 172, 172) 30%, rgb(97, 97, 97) 90%)",
+    borderRadius: 3,
+    border: 0,
+    color: "white",
+    height: 48,
+    padding: "5 30px",
+    boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)"
   },
   control: {
     padding: theme.spacing(2)
@@ -24,33 +33,33 @@ export default function BasicInfoContainer(props) {
   return (
     <Grid container className={classes.root}>
       {props.affiliate && (
-        <Grid item>
+        <Grid className={classes.paper} item>
           {" "}
-          <Card>Affiliate</Card>{" "}
+          <div className={classes.root}>Affiliate</div>{" "}
         </Grid>
       )}
       {props.dropBar && (
-        <Grid item>
+        <Grid className={classes.paper} item>
           {" "}
-          <Card>Drop Bar</Card>
+          <div className={classes.root}>Drop Bar</div>
         </Grid>
       )}
       {props.juniorClass && (
-        <Grid item>
+        <Grid className={classes.paper} item>
           {" "}
-          <Card>Principiants Friendly</Card>
+          <div className={classes.root}>Principiants Friendly</div>
         </Grid>
       )}
       {props.openBox && (
-        <Grid item>
+        <Grid className={classes.paper} item>
           {" "}
-          <Card>Open Box</Card>
+          <div className={classes.root}>Open Box</div>
         </Grid>
       )}
       {props.kidsClass && (
-        <Grid item>
+        <Grid className={classes.paper} item>
           {" "}
-          <Card>Kids Class</Card>
+          <div className={classes.root}>Kids Class</div>
         </Grid>
       )}
     </Grid>
