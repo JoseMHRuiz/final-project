@@ -37,6 +37,9 @@ export default function NavbarCom(props) {
             <LinkContainer to="/main">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/create">
+              <Nav.Link>Create</Nav.Link>
+            </LinkContainer>
             <Nav.Link href="/landing">Landing</Nav.Link>
           </Nav>
           <Nav>

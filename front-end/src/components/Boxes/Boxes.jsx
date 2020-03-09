@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./Boxes.scss";
 import BoxDetails from "../BoxDetails/BoxDetails";
 import BoxCard from "../BoxCard/BoxCard";
-import SearchInput from "../Search/SearchInput";
+
 import { Container } from "@material-ui/core";
 
 function Boxes(props) {

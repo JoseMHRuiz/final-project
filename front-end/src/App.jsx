@@ -14,6 +14,7 @@ import Boxes from "./components/Boxes/Boxes";
 import BoxDetails from "./components/BoxDetails/BoxDetails";
 import IndexService from "./services/IndexService";
 import Search from "./components/Search/Search";
+import CreateBox from "./components/createBox/createBox";
 
 //App es la aplicación base, que se sirve del servicio AuthService para conectar con la bbdd
 class App extends Component {
@@ -106,6 +107,10 @@ class App extends Component {
               render={props => (
                 <BoxDetails userInSession={loggedInUser} {...props} />
               )}
+            />
+            <Route
+              path="/create"
+              render={props => <CreateBox userInSession={loggedInUser} />}
             />
             {/* <Route exact path="/test">
               {" "}

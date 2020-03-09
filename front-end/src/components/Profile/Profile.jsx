@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import "./Profile.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import CommentsContainer from "../BoxDetails/CommentsContainer/CommentsContainer";
+import CommentsContainer from "./CommentsContainer";
 const Profile = props => {
   const { userInSession } = props;
   console.log(userInSession);

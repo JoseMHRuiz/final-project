@@ -6,7 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import Radio from "@material-ui/core/Radio";
 import Paper from "@material-ui/core/Paper";
-import CardCommentProfile from "./CardCommentProf/CardCommentProf";
+import CardCommentProfile from "./CardCommentProf";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,

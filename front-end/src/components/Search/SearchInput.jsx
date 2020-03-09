@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 
-class SearchBar extends Component {
+class SearchInput extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,12 +15,14 @@ class SearchBar extends Component {
 
   handleChange(event) {
     const newValueSearch = event.target.value;
+    console.log(newValueSearch);
     this.setState({
       search: newValueSearch
     });
   }
 
   handleSubmit(event) {
+    console.log(this.state.search);
     event.preventDefault();
     this.setState({
       redirect: `/box/search/${this.state.search}`
@@ -40,11 +42,13 @@ class SearchBar extends Component {
             className="mr-sm-2"
             onChange={event => this.handleChange(event)}
           />
-          <Button variant="outline-success">Search</Button>
+          <Button type="submit" variant="outline-success">
+            Search
+          </Button>
         </Form>
       </div>
     );
   }
 }
 
-export default SearchBar;
+export default SearchInput;

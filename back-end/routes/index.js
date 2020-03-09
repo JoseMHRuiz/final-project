@@ -315,9 +315,10 @@ router.post("/deleteComment", (req, res, user) => {
   console.log(req.body.comment);
   let { comment } = req.body;
   console.log(comment._id);
-  // Comment.findByIdAndDelete(req.params.id)
-  //   .then(res.redirect(`/users/${req.user.id}`))
-  //   .catch(err => console.log(err));
+  Comment.findByIdAndDelete(comment._id)
+    .then(comment => console.log(comment))
+    .then(() => res.json({ created: true }))
+    .catch(err => console.log(err));
 });
 
 //add comment to the database and push the id to the user and box
@@ -355,5 +356,6 @@ router.post("/addComment", (req, res, next) => {
         }
       )
     )
+    .then(() => res.json({ created: true }))
     .catch(err => console.log(err));
 });

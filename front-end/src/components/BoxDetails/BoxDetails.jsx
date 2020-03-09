@@ -6,23 +6,37 @@ import SimpleMap from "../Maps/Map";
 import CardMaterial from "./CardMaterial/CardMaterial";
 import CardComment from "./CommentsContainer/CardComment/CardComment";
 import CommentsContainerDetail from "./CommentsContainer/CommentsContainerDetail";
-import CommentInput from "./CardMaterial/CommentInput/CommentInput";
+import CommentInput from "./CommentsContainer/CommentInput";
+import IndexService from "../../services/IndexService";
 
 class BoxDetails extends Component {
   constructor(props) {
     super(props);
     this.state = { box: {} };
     this.services = new getBoxDetails();
+    this.commentServices = new IndexService();
   }
-
-  componentDidMount = () => this.getBoxDetails();
 
   getBoxDetails = () => {
     this.services
       .getBoxDetails(this.props.match.params.id)
-      .then(oneBox => this.setState({ box: oneBox }))
+      .then(oneBox => {
+        console.log(oneBox);
+        this.setState({ box: oneBox });
+      })
       .catch(err => console.log(err));
   };
+
+  postComment = data => {
+    const { userInSession } = this.props;
+    const { id } = this.props.match.params;
+
+    this.commentServices.postComment(data, userInSession, id).then(() => {
+      this.getBoxDetails();
+    });
+  };
+
+  componentDidMount = () => this.getBoxDetails();
   render() {
     if (this.state.box.boxDetails) {
       const { boxDetails } = this.state.box;
@@ -151,10 +165,7 @@ class BoxDetails extends Component {
                   </div>
                 </div>
                 <div className="tab-pane" id="messages">
-                  <CommentInput
-                    userInSession={userInSession}
-                    boxId={boxDetails._id}
-                  />
+                  <CommentInput create={elm => this.postComment(elm)} />
                   <CommentsContainerDetail
                     commentsArrDetails={commentsObj}
                   ></CommentsContainerDetail>

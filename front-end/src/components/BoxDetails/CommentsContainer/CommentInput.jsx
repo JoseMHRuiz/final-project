@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import IndexService from "../../../../services/IndexService";
+import IndexService from "../../../services/IndexService";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,13 +26,11 @@ const useStyles = makeStyles(theme => ({
 export default function CommentInput(props) {
   const classes = useStyles();
   const { register, handleSubmit, errors } = useForm();
-  const service = new IndexService();
-  const { userInSession } = props;
-  const { boxId } = props;
-  console.log(boxId);
+  const { create } = props;
   const onSubmit = data => {
-    service.postComment(data, userInSession, boxId);
-    console.log(data);
+    // service.postComment(data, userInSession, boxId);
+    create(data);
+    // console.log(data);
   };
 
   return (
