@@ -1,8 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { Redirect, withRouter } from "react-router-dom";
-import { useRoutes, useRedirect } from "hookrouter";
 
 import "./styles.css";
 

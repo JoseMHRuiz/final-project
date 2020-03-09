@@ -1,12 +1,6 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-// import IndexService from "../../services/IndexService";
-import { Link } from "react-router-dom";
 import "./Boxes.scss";
-import BoxDetails from "../BoxDetails/BoxDetails";
 import BoxCard from "../BoxCard/BoxCard";
-
-import { Container } from "@material-ui/core";
 
 function Boxes(props) {
   const { boxes } = props.allBoxes;

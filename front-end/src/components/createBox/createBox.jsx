@@ -1,27 +1,14 @@
 import React, { Component } from "react";
-import { useForm, Controller } from "react-hook-form";
-import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
-import CheckboxesGroup from "./CheckBox";
-import Input from "@material-ui/core/Input";
-import Form from "react-bootstrap/Form";
+
 import Card from "react-bootstrap/Card";
+import Form from "./FormBasic";
 import "./createBox.css";
-const defaultValues = {
-  boxName: "",
-  affiliate: false,
-  area: "",
-  city: "",
-  openBox: false,
-  dropBar: false,
-  juniorClass: false,
-  kidsClass: false
-};
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      checked: false,
       box: {
         boxName: "",
 
@@ -31,39 +18,40 @@ export default class App extends Component {
       redirect: null
     };
   }
-  checkBoxChange = event => {
-    console.log(event);
-    this.setState(prevState => ({
-      box: {}
-    }));
-  };
+  //   checkBoxChange = event => {
+  //     console.log(event);
+  //     this.setState(prevState => ({
+  //       ...prevState,
+  //       box: {
+  //         openBox: event.openBox,
+  //         dropBar: event.dropBar,
+  //         juniorClass: event.juniorClass,
+  //         kidsClass: event.kidsClass,
+  //         affiliate: event.affiliate
+  //       }
+  //     }));
+  // console.log(this.state);
+  // };
   handleChange = event => {
-    const { name, value } = event.target;
-    const newValueSearch = event.target.value;
-    console.log(event.target);
+    // const { name, value } = event.target;
+    // const newValueSearch = event.target.value;
+    // console.log(event.target);
+    //   console.log(this.state);
+    console.log(event);
+    // this.setState({});
     console.log(this.state);
-    this.setState(prevState => ({
-      box: {
-        ...prevState.box, // copy all other key-value pairs of food object
-        [name]: value
-      }
-    }));
   };
   handleSubmit(event) {
-    console.log(this.state);
-    event.preventDefault();
-    this.setState({
-      redirect: `/box/search/${this.state.search}`
-    });
+    // console.log(this.state);
+    // event.preventDefault();
+    // this.setState({
+    //   redirect: `/box/search/${this.state.search}`
+    // });
   }
 
-  //   const { register, handleSubmit, errors, control } = useForm({
-  //     defaultValues
-  //   });
-  //   const onSubmit = data => console.log(data);
   render() {
     return (
-      <div className="AppCreate">
+      <div className="BoxDetails">
         <div className="card card-nav-tabs">
           <div className="card-header card-header-primary">
             <div className="nav-tabs-navigation">
@@ -89,7 +77,7 @@ export default class App extends Component {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <div className="nav-link">NameBox</div>
+                    <div className="nav-link">namebox</div>
                   </li>
                 </ul>
               </div>
@@ -126,33 +114,8 @@ export default class App extends Component {
                   </Card>
                   <Card className="col data">
                     <div className="mini-data">
-                      {" "}
-                      <form onSubmit={e => this.handleSubmit(e)}>
-                        <Input
-                          type="text"
-                          placeholder="boxName"
-                          name="boxName"
-                          onChange={event => this.handleChange(event)}
-                        />
-
-                        <Input
-                          type="number"
-                          placeholder="area"
-                          onChange={event => this.handleChange(event)}
-                          name="area"
-                        />
-
-                        <Input
-                          type="text"
-                          placeholder="city"
-                          onChange={event => this.handleChange(event)}
-                          name="city"
-                        />
-                        <CheckboxesGroup checkBoxChange={this.checkBoxChange} />
-                        <input type="submit" />
-                      </form>
+                      <Form handleChange={this.handleChange} />
                     </div>
-                    <div className="mini-data">test3</div>
                   </Card>
                 </div>
               </div>

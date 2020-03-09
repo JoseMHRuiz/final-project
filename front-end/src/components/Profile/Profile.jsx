@@ -1,14 +1,10 @@
-import React, { Component } from "react";
-// import { Link } from "react-router-dom";
-
+import React from "react";
 import "./Profile.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import CommentsContainer from "./CommentsContainer";
 const Profile = props => {
   const { userInSession } = props;
-  console.log(userInSession);
-
   return (
     <Card className="Profile main main-raised">
       <div className="profile-content">

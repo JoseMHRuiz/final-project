@@ -1,11 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Paper from "@material-ui/core/Paper";
 import CardCommentProfile from "./CardCommentProf";
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,10 +20,7 @@ const useStyles = makeStyles(theme => ({
 export default function CommentsContainer(user) {
   const classes = useStyles();
   console.log(user);
-  // const { commentsArrDetails } = commentsObj;
   const { comments } = user;
-
-  const { userInSession } = user;
   console.log(comments);
   return comments ? (
     <Grid container className={classes.root} spacing={2}>

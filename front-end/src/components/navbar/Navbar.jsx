@@ -1,7 +1,6 @@
 // navbar/Navbar.js
 
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -9,20 +8,18 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import SplitButton from "react-bootstrap/SplitButton";
 import SearchInput from "../Search/SearchInput";
-import SearchStyled from "../Search/SearchStyled";
 
 import { LinkContainer } from "react-router-bootstrap";
 
 export default function NavbarCom(props) {
-  const [modalShow, setModalShow] = React.useState(false);
+  // const [modalShow, setModalShow] = React.useState(false);
   const { userInSession } = props;
-  const { getUser } = props;
   const handleLogout = e => {
     props.logout();
   };
-  const handleLogin = e => {
-    getUser();
-  };
+  // const handleLogin = e => {
+  //   getUser();
+  // };
   if (userInSession) {
     console.log(userInSession);
     return (

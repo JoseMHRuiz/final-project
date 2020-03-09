@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function CheckboxesGroup(props) {
-  console.log(props);
+  //   console.log(props.checkBoxChange);
+  const { checkBoxChange } = props;
   const classes = useStyles();
   const [state, setState] = React.useState({
     openBox: false,
@@ -28,12 +29,12 @@ export default function CheckboxesGroup(props) {
   });
 
   const handleChange = name => event => {
-    setState({ ...state, [name]: event.target.checked });
-    props.checkBoxChange(state);
+    setState({ ...state, [name]: event.target.checked }, checkBoxChange(state));
+    // console.log(state);
   };
 
   const { openBox, dropBar, juniorClass, kidsClass, affiliate } = state;
-  console.log(state);
+  //   console.log(state);
   return (
     <FormControl component="fieldset" className={classes.formControl}>
       <FormLabel component="legend">Assign responsibility</FormLabel>
@@ -46,7 +47,7 @@ export default function CheckboxesGroup(props) {
               value="openBox"
             />
           }
-          label="Open Box"
+          label={state.openBox}
         />
         <FormControlLabel
           control={

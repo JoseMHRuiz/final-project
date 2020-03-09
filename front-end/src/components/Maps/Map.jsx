@@ -29,7 +29,6 @@ class SimpleMap extends Component {
     zoom: 9
   };
   componentDidMount() {
-    console.log(this.props);
     this.setState(prevState => ({
       box: {
         ...prevState.box, // copy all other key-value pairs of food object
@@ -41,15 +40,15 @@ class SimpleMap extends Component {
 
   render() {
     const { pos } = this.props;
-    console.log(this.state);
 
     return (
       // Important! Always set the container height explicitly
-
       <div style={{ height: "100%", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyBp-UvjxkIJCseXzKxl8l-OCo5iU2mMjzU" }}
-          defaultCenter={this.state.box}
+          bootstrapURLKeys={{
+            key: "AIzaSyBp-UvjxkIJCseXzKxl8l-OCo5iU2mMjzU"
+          }}
+          defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
           options={getMapOptions}
         >

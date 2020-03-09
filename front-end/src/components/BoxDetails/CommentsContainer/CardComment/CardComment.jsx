@@ -30,8 +30,7 @@ const CardComment = commentCard => {
   // const { userInSession } = userInSession;
   let { comment } = commentCard.comment;
   let { user } = commentCard.comment;
-  console.log(comment);
-  //   console.log(user);
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>

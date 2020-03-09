@@ -4,10 +4,10 @@ import "./BoxDetails.scss";
 import Card from "react-bootstrap/Card";
 import SimpleMap from "../Maps/Map";
 import CardMaterial from "./CardMaterial/CardMaterial";
-import CardComment from "./CommentsContainer/CardComment/CardComment";
 import CommentsContainerDetail from "./CommentsContainer/CommentsContainerDetail";
 import CommentInput from "./CommentsContainer/CommentInput";
 import IndexService from "../../services/IndexService";
+import BasicInfoContainer from "./BasicInfo/BasicInfo";
 
 class BoxDetails extends Component {
   constructor(props) {
@@ -42,6 +42,7 @@ class BoxDetails extends Component {
       const { boxDetails } = this.state.box;
       const machinesArr = boxDetails.material.machines;
       const commentsObj = boxDetails.comments;
+
       const { userInSession } = this.props;
       const restArr = boxDetails.material.rest;
       return (
@@ -58,11 +59,6 @@ class BoxDetails extends Component {
                         data-toggle="tab"
                       >
                         <i className="material-icons">house</i> Box
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="#coaches" data-toggle="tab">
-                        <i className="material-icons">face</i> Coaches
                       </a>
                     </li>
                     <li className="nav-item">
@@ -130,20 +126,13 @@ class BoxDetails extends Component {
                       </div>
                     </Card>
                     <Card className="col data">
-                      <div className="mini-data">test2</div>
+                      <div className="mini-data row">
+                        <h3>Basic Info</h3>
+                        <BasicInfoContainer {...boxDetails} />
+                      </div>
                       <div className="mini-data">test3</div>
                     </Card>
                   </div>
-                </div>
-                <div className="tab-pane" id="coaches">
-                  <p>
-                    {" "}
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Aperiam itaque blanditiis ipsum! Minima totam vero
-                    voluptatibus in. Iusto consectetur, tempore molestiae
-                    suscipit, minus vel quaerat excepturi delectus quae
-                    reprehenderit quia!
-                  </p>
                 </div>
                 <div className="tab-pane" id="material">
                   <div className="mini-data row">

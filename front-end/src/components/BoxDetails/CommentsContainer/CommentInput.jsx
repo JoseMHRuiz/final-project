@@ -1,9 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import { Button } from "@material-ui/core";
 import { useForm } from "react-hook-form";
-import IndexService from "../../../services/IndexService";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CommentInput(props) {
   const classes = useStyles();
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const { create } = props;
   const onSubmit = data => {
     // service.postComment(data, userInSession, boxId);

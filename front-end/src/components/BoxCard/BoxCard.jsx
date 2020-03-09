@@ -1,9 +1,6 @@
-import React, { Component } from "react";
-import { Button, CardActionArea, CardMedia } from "@material-ui/core";
-// import { Link } from "react-router-dom";
+import React from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-// import "./BoxCard.css";
 
 const BoxCard = ({ boxName, _id, img }) => {
   return (

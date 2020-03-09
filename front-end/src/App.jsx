@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 // import "bulma/css/bulma.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
