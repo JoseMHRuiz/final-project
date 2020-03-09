@@ -4,6 +4,8 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import IndexService from "../../../../services/IndexService";
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1
@@ -30,6 +32,11 @@ const CardCommentProfile = obj => {
   // const { userInSession } = userInSession;
   const { comment } = obj.comment;
   const { userInSession } = obj;
+  const services = new IndexService();
+  const deleteComm = com => {
+    console.log(com);
+    services.deleteComment(com);
+  };
 
   return (
     <div className={classes.root}>
@@ -56,7 +63,7 @@ const CardCommentProfile = obj => {
               </Grid>
             </Grid>
             <Grid item>
-              {/* <Typography variant="subtitle1">$19.00</Typography> */}
+              <Button onClick={() => deleteComm(obj.comment)}>🗑</Button>
             </Grid>
           </Grid>
         </Grid>

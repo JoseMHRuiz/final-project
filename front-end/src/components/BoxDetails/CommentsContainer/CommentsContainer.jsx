@@ -30,7 +30,7 @@ export default function CommentsContainer(user) {
 
   const { userInSession } = user;
   console.log(comments);
-  return (
+  return comments ? (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
@@ -46,5 +46,7 @@ export default function CommentsContainer(user) {
         </Grid>
       </Grid>
     </Grid>
+  ) : (
+    <div>Loading</div>
   );
 }

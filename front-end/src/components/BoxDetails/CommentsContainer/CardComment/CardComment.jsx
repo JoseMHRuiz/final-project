@@ -25,11 +25,13 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CardComment = ({ comment, user }) => {
+const CardComment = commentCard => {
   const classes = useStyles();
   // const { userInSession } = userInSession;
+  let { comment } = commentCard.comment;
+  let { user } = commentCard.comment;
   console.log(comment);
-  console.log(user);
+  //   console.log(user);
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>

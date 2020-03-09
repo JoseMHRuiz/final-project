@@ -17,14 +17,20 @@ class IndexService {
       .then(response => response.data);
   postComment = (comment, user, boxId) => {
     const { commentForm } = comment;
-    console.log("services");
-    console.log(commentForm);
-    console.log(user);
     return this.service
       .post("/addComment", {
         commentForm,
         user,
         boxId
+      })
+      .then(response => response.data);
+  };
+  deleteComment = comment => {
+    console.log("services");
+    console.log(comment);
+    return this.service
+      .post("/deleteComment", {
+        comment
       })
       .then(response => response.data);
   };

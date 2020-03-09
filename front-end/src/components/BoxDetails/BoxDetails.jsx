@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 import SimpleMap from "../Maps/Map";
 import CardMaterial from "./CardMaterial/CardMaterial";
 import CardComment from "./CommentsContainer/CardComment/CardComment";
-import CommentsContainer from "./CommentsContainer/CommentsContainer";
+import CommentsContainerDetail from "./CommentsContainer/CommentsContainerDetail";
 import CommentInput from "./CardMaterial/CommentInput/CommentInput";
 
 class BoxDetails extends Component {
@@ -29,7 +29,6 @@ class BoxDetails extends Component {
       const machinesArr = boxDetails.material.machines;
       const commentsObj = boxDetails.comments;
       const { userInSession } = this.props;
-      console.log(this.props);
       const restArr = boxDetails.material.rest;
       return (
         <div className="BoxDetails">
@@ -156,9 +155,9 @@ class BoxDetails extends Component {
                     userInSession={userInSession}
                     boxId={boxDetails._id}
                   />
-                  <CommentsContainer
+                  <CommentsContainerDetail
                     commentsArrDetails={commentsObj}
-                  ></CommentsContainer>
+                  ></CommentsContainerDetail>
                 </div>
               </div>
             </div>

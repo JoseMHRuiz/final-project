@@ -310,6 +310,16 @@ router.get("/users/:id", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
+router.post("/deleteComment", (req, res, user) => {
+  console.log("back");
+  console.log(req.body.comment);
+  let { comment } = req.body;
+  console.log(comment._id);
+  // Comment.findByIdAndDelete(req.params.id)
+  //   .then(res.redirect(`/users/${req.user.id}`))
+  //   .catch(err => console.log(err));
+});
+
 //add comment to the database and push the id to the user and box
 router.post("/addComment", (req, res, next) => {
   // let userId = req.body._id;
