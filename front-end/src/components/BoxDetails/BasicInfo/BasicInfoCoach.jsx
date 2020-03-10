@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     color: "white",
     height: 48,
-    padding: "5px 30px 0 30px",
+    padding: "12px 30px 0 30px",
     boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)"
   },
   title: {
@@ -35,27 +35,29 @@ export default function BasicInfoContainerCoach(props) {
   console.log(coach);
   return (
     <Container>
-      <Grid container className={classes.root}>
-        <Grid item xs={7}>
+      <div container className={classes.root}>
+        <div item xs={7}>
           <div className={classes.title}>Min Credential</div>
           <div className={classes.paper}>{coach.minCredential}</div>
-        </Grid>
-        <Grid item xs={7}>
+        </div>
+        <div item xs={7}>
           <div className={classes.title}>Max Credential</div>
           <div className={classes.paper}>{coach.maxCredential}</div>
-        </Grid>
-        <Grid item xs={7}>
-          <div className={classes.title}>Other Credentials</div>
-        </Grid>
+        </div>
+        <div container className={classes.root}>
+          <div item>
+            <div className={classes.title}>Other Credentials</div>
+          </div>
 
-        {coach.otherCredentials.map(cred => {
-          return (
-            <Grid item>
-              <div className={classes.paper}>{cred}</div>
-            </Grid>
-          );
-        })}
-      </Grid>
+          {coach.otherCredentials.map(cred => {
+            return (
+              <div item>
+                <div className={classes.paper}>{cred}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </Container>
   );
 }

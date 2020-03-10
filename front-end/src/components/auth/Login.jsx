@@ -1,9 +1,10 @@
-// auth/Signup.js
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import AuthService from "../../services/AuthService";
 import { Link } from "react-router-dom";
 import "./Login.scss";
+
+import { TextField } from "@material-ui/core";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -68,36 +69,29 @@ class Login extends Component {
                       </a>
                     </div>
                   </div>
-                  <p className="description text-center">Or Be classNameical</p>
                   <div className="card-body">
                     <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="material-icons">face</i>
-                        </span>
-                      </div>
-                      <input
+                      <TextField
                         type="text"
                         className="form-control"
                         name="username"
                         value={this.state.username}
                         onChange={e => this.handleChange(e)}
-                        placeholder="Username"
+                        id="outlined-basic"
+                        label="Username"
+                        variant="outlined"
                       />
                     </div>
                     <div className="input-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input
+                      <TextField
                         type="password"
                         name="password"
                         className="form-control"
                         value={this.state.password}
                         onChange={e => this.handleChange(e)}
-                        placeholder="Password"
+                        id="outlined-basic"
+                        label="Password"
+                        variant="outlined"
                       />
                     </div>
                   </div>
@@ -105,11 +99,11 @@ class Login extends Component {
                     <input
                       type="submit"
                       value="Login"
-                      className="btn btn-primary btn-link btn-wd btn-lg"
+                      className="btn btn-secondary"
                     />
                   </div>
-                  <Link to="/SignUp">
-                    <p>SignUp</p>
+                  <Link className="change-signup" to="/SignUp">
+                    SignUp
                   </Link>
                 </form>
               </div>

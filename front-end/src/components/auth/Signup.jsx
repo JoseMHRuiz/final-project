@@ -2,6 +2,8 @@
 import React, { Component } from "react";
 import AuthService from "../../services/AuthService";
 import "./Signup.scss";
+import { TextField } from "@material-ui/core";
+
 import { Link } from "react-router-dom";
 
 //signup y login son iguales a excepción de el html renderizado y el endpoint de nuestra API rest a la que llamamos
@@ -62,7 +64,7 @@ class Signup extends Component {
               <div className="card card-login">
                 <form className="form" onSubmit={this.handleFormSubmit}>
                   <div className="card-header card-header-primary text-center">
-                    <h4 className="card-title">SignUp</h4>
+                    <h4 className="card-title">Signup</h4>
                     <div className="social-line">
                       <a href="#pablo" className="btn btn-just-icon btn-link">
                         <i className="fa fa-facebook-square"></i>
@@ -75,57 +77,41 @@ class Signup extends Component {
                       </a>
                     </div>
                   </div>
-                  <p className="description text-center">Or Be classNameical</p>
                   <div className="card-body">
-                    <div className="form-group">
-                      <div className="form-group-prepend">
-                        <span
-                          className={
-                            this.state.error
-                              ? "input-group-text error-class"
-                              : "input-group-text"
-                          }
-                        >
-                          <i className="material-icons">face</i>
-                        </span>
-                      </div>
-                      <input
+                    <div className="input-group">
+                      <TextField
                         type="text"
-                        className="form-control "
+                        className="form-control"
                         name="username"
                         value={this.state.username}
                         onChange={e => this.handleChange(e)}
-                        placeholder="Username"
+                        id="outlined-basic"
+                        label="Username"
+                        variant="outlined"
                       />
                     </div>
-                    <div className="form-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input
+                    <div className="input-group">
+                      <TextField
                         type="password"
                         name="password"
                         className="form-control"
                         value={this.state.password}
                         onChange={e => this.handleChange(e)}
-                        placeholder="Password"
+                        id="outlined-basic"
+                        label="Password"
+                        variant="outlined"
                       />
                     </div>
-                    <div className="form-group">
-                      <div className="input-group-prepend">
-                        <span className="input-group-text">
-                          <i className="material-icons">lock_outline</i>
-                        </span>
-                      </div>
-                      <input
+                    <div className="input-group">
+                      <TextField
                         type="email"
                         name="email"
                         className="form-control"
                         value={this.state.email}
                         onChange={e => this.handleChange(e)}
-                        placeholder="email@email.com"
+                        id="outlined-basic"
+                        label="Email"
+                        variant="outlined"
                       />
                     </div>
                   </div>
@@ -133,12 +119,12 @@ class Signup extends Component {
                     <input
                       type="submit"
                       value="Signup"
-                      className="btn btn-primary btn-link btn-wd btn-lg"
+                      className="btn btn-secondary"
                     />
-                    <Link to="/Login">
-                      <p>Login</p>
-                    </Link>
                   </div>
+                  <Link className="change-signup" to="/login">
+                    Login
+                  </Link>
                 </form>
               </div>
             </div>

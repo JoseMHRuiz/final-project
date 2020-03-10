@@ -8,11 +8,28 @@ import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import SplitButton from "react-bootstrap/SplitButton";
 import SearchInput from "../Search/SearchInput";
+import Avatar from "@material-ui/core/Avatar";
+import { makeStyles } from "@material-ui/core/styles";
 
 import { LinkContainer } from "react-router-bootstrap";
-
+const useStyles = makeStyles(theme => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1)
+    }
+  },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3)
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7)
+  }
+}));
 export default function NavbarCom(props) {
-  // const [modalShow, setModalShow] = React.useState(false);
+  const classes = useStyles();
   const { userInSession } = props;
   const handleLogout = e => {
     props.logout();
@@ -23,7 +40,12 @@ export default function NavbarCom(props) {
   if (userInSession) {
     console.log(userInSession);
     return (
-      <Navbar className="navbar" sticky="top" variant="dark" expand="md">
+      <Navbar
+        className="navbar user-in-sesion"
+        sticky="top"
+        variant="dark"
+        expand="md"
+      >
         <Navbar.Brand>SocialBox</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -43,10 +65,16 @@ export default function NavbarCom(props) {
             <SearchInput></SearchInput>
             <ButtonToolbar>
               <SplitButton
-                title={userInSession.username}
                 variant="secundary"
                 drop="left"
                 id="dropdown-split-variants-secundary"
+                title={
+                  <Avatar
+                    alt={userInSession.username}
+                    src={userInSession.img}
+                    className={classes.small}
+                  />
+                }
               >
                 <LinkContainer to="/profile">
                   <Dropdown.Item>Profile</Dropdown.Item>

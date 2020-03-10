@@ -34,8 +34,13 @@
   }
 }
 
-.mini-data {
+.mini-basic {
   display: flex;
+  flex-direction: column;
+}
+.data-coaches {
+  display: flex;
+  flex-direction: column;
 }
 
 div.card {

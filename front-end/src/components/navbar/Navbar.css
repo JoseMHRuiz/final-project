@@ -1,6 +1,8 @@
 .navbar {
-  padding: 0.1rem 1rem;
   background-color: rgba(82, 80, 80, 0.673);
+}
+.searchBar {
+  padding-top: 1%;
 }
 
 nav.navbar-color-on-scroll {

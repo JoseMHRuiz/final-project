@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button } from "@material-ui/core";
+import { Button, TextField } from "@material-ui/core";
 import { useForm } from "react-hook-form";
 
 const useStyles = makeStyles(theme => ({
@@ -11,11 +11,12 @@ const useStyles = makeStyles(theme => ({
     }
   },
   button: {
-    background: "linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)",
+    background:
+      "linear-gradient: 45deg, rgb(250, 245, 246) 30%, rgb(214, 214, 213) 90%",
     border: 0,
     borderRadius: 3,
-    boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
-    color: "white",
+    boxShadow: "0 3px 5px 2px rgba(0, 0, 0, 0.14)",
+    color: "black",
     height: 48,
     padding: "0 30px"
   }
@@ -38,18 +39,12 @@ export default function CommentInput(props) {
       noValidate
       autoComplete="off"
     >
-      {/* <TextField
-        // id="standard-basic"
-        // label="Comment"
-        // type="text"
-        // placeholder="Comment"
-        name="Comment"
-        ref={register}
-      /> */}
-      <input
+      <TextField
         name="commentForm"
         ref={register({ required: true, maxLength: 140 })}
-        className={classes.button}
+        id="outlined-basic"
+        label="Put your comment here"
+        variant="outlined"
       />
       <Button type="submit" className={classes.button}>
         Send Comment

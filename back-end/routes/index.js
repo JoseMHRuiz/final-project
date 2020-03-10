@@ -221,6 +221,7 @@ router.get("/filter-box/:cityName/boxes", (req, res, next) => {
 router.get("/all-box", (req, res, next) => {
   const currentUser = req.user;
   Box.find({})
+    .select({ boxName: 1, img: 1 })
     .populate("user")
     .populate({
       path: "comments",

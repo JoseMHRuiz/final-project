@@ -9,6 +9,16 @@ import CommentInput from "./CommentsContainer/CommentInput";
 import IndexService from "../../services/IndexService";
 import BasicInfoContainer from "./BasicInfo/BasicInfo";
 import BasicInfoContainerCoach from "./BasicInfo/BasicInfoCoach";
+import { css } from "@emotion/core";
+import DotLoader from "react-spinners/PacmanLoader";
+
+const override = css`
+  display: block;
+  color: grey;
+  size: 40;
+  margin: 2;
+  padding: 20%;
+`;
 
 class BoxDetails extends Component {
   constructor(props) {
@@ -126,13 +136,15 @@ class BoxDetails extends Component {
                       </div>
                     </Card>
                     <Card className="col data">
-                      <div className="mini-data">
+                      <div className="mini-basic">
                         <h3>Basic</h3>
                         <BasicInfoContainer {...boxDetails} />
                       </div>
-                      <div className="mini-data">
+                      <div className="data-coaches">
                         <h3>Coaches</h3>
-                        <BasicInfoContainerCoach {...boxDetails} />
+                        <div>
+                          <BasicInfoContainerCoach {...boxDetails} />
+                        </div>
                       </div>
                     </Card>
                   </div>
@@ -168,7 +180,14 @@ class BoxDetails extends Component {
         </div>
       );
     } else {
-      return <h1>Loading...</h1>;
+      return (
+        <DotLoader
+          css={override}
+          // size={150}
+          // color={"#123abc"}
+          // loading={this.state.loading}
+        />
+      );
     }
   }
 }

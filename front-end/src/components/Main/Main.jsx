@@ -2,29 +2,27 @@ import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 
 import "./Main.sass";
+import { Card, Link } from "@material-ui/core";
 
 class Main extends Component {
   render() {
     return (
-      <div>
+      <Card>
         <div className="page-header header-filter" data-parallax="true">
           <div className="container">
             <div className="row">
               <div className="col-md-6">
                 <h1 className="title">Your Story Starts With Us.</h1>
                 <h4>
-                  Every landing page needs a small description after the big
-                  bold title, that&apos;s why we added this text here. Add here
-                  all the information that can make you or your product create
-                  the first impression.
+                  This is a website to find boxes that meet your requirements
                 </h4>
-                <div
-                  href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                  target="_blank"
+                <Link
+                  href="https://www.youtube.com/watch?v=0IxlWno8VvA"
                   className="btn btn-danger btn-raised btn-lg"
+                  target="_blank"
                 >
-                  <i className="fa fa-play"></i> Watch video
-                </div>
+                  <i className="fa fa-play"></i> This is CrossFit
+                </Link>
               </div>
             </div>
           </div>
@@ -34,13 +32,12 @@ class Main extends Component {
             <div className="section text-center">
               <div className="row">
                 <div className="col-md-8 ml-auto mr-auto">
-                  <h2 className="title">Let&apos;s talk product</h2>
+                  <h2 className="title">Different type of filter</h2>
                   <h5 className="description">
-                    This is the paragraph where you can write more details about
-                    your product. Keep you user engaged by providing meaningful
-                    information. Remember that by this time, the user is
-                    curious, otherwise he wouldn&apos;t scroll to get here. Add
-                    a button if you want the user to see more.
+                    You can search by filtering the boxes. If they let you drop
+                    the bar. If they have classes for beginners. If they are
+                    affiliates. For the material they have. If they have classes
+                    for children
                   </h5>
                 </div>
               </div>
@@ -51,11 +48,9 @@ class Main extends Component {
                       <div className="icon icon-info">
                         <i className="material-icons">chat</i>
                       </div>
-                      <h4 className="info-title">Free Chat</h4>
+                      <h4 className="info-title">Comment</h4>
                       <p>
-                        Divide details about your product or agency work into
-                        parts. Write a few lines about each one. A paragraph
-                        describing a feature will be enough.
+                        You can comment the box, if you already have experience
                       </p>
                     </div>
                   </div>
@@ -64,12 +59,8 @@ class Main extends Component {
                       <div className="icon icon-success">
                         <i className="material-icons">verified_user</i>
                       </div>
-                      <h4 className="info-title">Verified Users</h4>
-                      <p>
-                        Divide details about your product or agency work into
-                        parts. Write a few lines about each one. A paragraph
-                        describing a feature will be enough.
-                      </p>
+                      <h4 className="info-title">Coaches</h4>
+                      <p>You can see the official certifications they have</p>
                     </div>
                   </div>
                   <div className="col-md-4">
@@ -77,190 +68,19 @@ class Main extends Component {
                       <div className="icon icon-danger">
                         <i className="material-icons">fingerprint</i>
                       </div>
-                      <h4 className="info-title">Fingerprint</h4>
+                      <h4 className="info-title">More info comming</h4>
                       <p>
-                        Divide details about your product or agency work into
-                        parts. Write a few lines about each one. A paragraph
-                        describing a feature will be enough.
+                        You cand send an email to include the information you
+                        think is relevant
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="section text-center">
-              <h2 className="title">Here is our team</h2>
-              <div className="team">
-                <div className="row">
-                  <div className="col-md-4">
-                    <div className="team-player">
-                      <div className="card card-plain">
-                        <div className="col-md-6 ml-auto mr-auto">
-                          <img
-                            src="../assets/img/faces/avatar.jpg"
-                            alt="Thumbnail"
-                            className="img-raised rounded-circle img-fluid"
-                          />
-                        </div>
-                        <h4 className="card-title">
-                          Gigi Hadid
-                          <small className="card-description text-muted">
-                            Model
-                          </small>
-                        </h4>
-                        <div className="card-body">
-                          <div className="card-description">
-                            You can write here details about one of your team
-                            members. You can give more details about what they
-                            do. Feel free to add some
-                            <div>links</div> for people to be able to follow
-                            them outside the site.
-                          </div>
-                        </div>
-                        <div className="card-footer justify-content-center">
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-twitter"></i>
-                          </div>
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-instagram"></i>
-                          </div>
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-facebook-square"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="team-player">
-                      <div className="card card-plain">
-                        <div className="col-md-6 ml-auto mr-auto">
-                          <img
-                            src="../assets/img/faces/christian.jpg"
-                            alt="Thumbnail"
-                            className="img-raised rounded-circle img-fluid"
-                          />
-                        </div>
-                        <h4 className="card-title">
-                          Christian Louboutin
-                          <small className="card-description text-muted">
-                            Designer
-                          </small>
-                        </h4>
-                        <div className="card-body">
-                          <div className="card-description">
-                            You can write here details about one of your team
-                            members. You can give more details about what they
-                            do. Feel free to add some
-                            <div>links</div> for people to be able to follow
-                            them outside the site.
-                          </div>
-                        </div>
-                        <div className="card-footer justify-content-center">
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-twitter"></i>
-                          </div>
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-linkedin"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
-                    <div className="team-player">
-                      <div className="card card-plain">
-                        <div className="col-md-6 ml-auto mr-auto">
-                          <img
-                            src="../assets/img/faces/kendall.jpg"
-                            alt="Thumbnail"
-                            className="img-raised rounded-circle img-fluid"
-                          />
-                        </div>
-                        <h4 className="card-title">
-                          Kendall Jenner
-                          <small className="card-description text-muted">
-                            Model
-                          </small>
-                        </h4>
-                        <div className="card-body">
-                          <div className="card-description">
-                            You can write here details about one of your team
-                            members. You can give more details about what they
-                            do. Feel free to add some
-                            <div>links</div> for people to be able to follow
-                            them outside the site.
-                          </div>
-                        </div>
-                        <div className="card-footer justify-content-center">
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-twitter"></i>
-                          </div>
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-instagram"></i>
-                          </div>
-                          <div className="btn btn-link btn-just-icon">
-                            <i className="fa fa-facebook-square"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="section section-contacts">
-              <div className="row">
-                <div className="col-md-8 ml-auto mr-auto">
-                  <h2 className="text-center title">Work with us</h2>
-                  <h4 className="text-center description">
-                    Divide details about your product or agency work into parts.
-                    Write a few lines about each one and contact us about any
-                    further collaboration. We will responde get back to you in a
-                    couple of hours.
-                  </h4>
-                  <form className="contact-form">
-                    <div className="row">
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label className="bmd-label-floating">
-                            Your Name
-                          </label>
-                          <input type="email" className="form-control" />
-                        </div>
-                      </div>
-                      <div className="col-md-6">
-                        <div className="form-group">
-                          <label className="bmd-label-floating">
-                            Your Email
-                          </label>
-                          <input type="email" className="form-control" />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <label className="bmd-label-floating">Your Message</label>
-                      <textarea
-                        type="email"
-                        className="form-control"
-                        rows="4"
-                        id="exampleMessage"
-                      ></textarea>
-                    </div>
-                    <div className="row">
-                      <div className="col-md-4 ml-auto mr-auto text-center">
-                        <button className="btn btn-primary btn-raised">
-                          Send Message
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
-      </div>
+      </Card>
     );
   }
 }

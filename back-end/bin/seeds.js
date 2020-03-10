@@ -16,7 +16,7 @@ const { DBURL, DBDEPLOY } = process.env;
 
 function dbConnect(cb) {
   mongoose
-    .connect(`${DBURL}`, {
+    .connect(`${DBDEPLOY}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true
     })

@@ -104,3 +104,16 @@ div.card .card-header-primary {
   flex-direction: row;
   flex-wrap: wrap;
 }
+.item-boxes.MuiGrid-item {
+  .card {
+    max-height: 200px;
+  }
+  margin: 0.2%;
+}
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  .boxes {
+    border: 1.375rem 1.75rem;
+  }
+}

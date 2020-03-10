@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     border: 0,
     color: "white",
     height: 48,
-    padding: "5 30px",
+    padding: "10px 20px 0 20px",
     boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)"
   },
   control: {
