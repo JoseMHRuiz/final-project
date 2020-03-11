@@ -1,12 +1,14 @@
 .navbar {
-  background-color: rgba(82, 80, 80, 0.673);
+  background-color: rgba(248, 248, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 .searchBar {
   padding-top: 1%;
 }
 
 nav.navbar-color-on-scroll {
-  background-color: rgba(133, 133, 133, 0.639);
+  background-color: rgba(248, 248, 255, 0.2);
+  backdrop-filter: blur(10px);
 }
 
 .transclass {

@@ -5,7 +5,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import AuthService from "./services/AuthService";
-import Landing from "./components/Landing/Landing";
 import NavbarCom from "./components/Navbar/Navbar";
 import Main from "./components/Main/Main";
 import Profile from "./components/Profile/Profile";
