@@ -19,13 +19,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function CommentsContainerDetail(comments) {
   const { commentsArrDetails } = comments;
-  console.log(commentsArrDetails);
+  console.log(comments);
   const classes = useStyles();
-  //   //   console.log(user);
-  //   //   // const { commentsArrDetails } = commentsObj;
-  //   //   const { comments } = user;
 
-  //   //   const { userInSession } = user;
   return commentsArrDetails ? (
     <Grid container className={classes.root} spacing={2}>
       <Grid item xs={12}>

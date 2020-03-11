@@ -1,0 +1,30 @@
+html,
+body {
+}
+#main-card-landing {
+  background: inherit;
+
+  margin: 5%;
+  background-color: rgba(248, 248, 255, 0.2);
+  padding: 10%;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+.button-main {
+  position: absolute;
+  bottom: 37%;
+  left: 32%;
+}
+h1.text-center {
+  margin-bottom: 15%;
+}
+div#blur {
+  background: inherit;
+
+  height: 100%; /* h */
+  width: 100%; /* (100/cw) x 100% */
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* -webkit-filter: blur(5px); */
+}

@@ -70,7 +70,6 @@ class App extends Component {
           </div>{" "}
           <Switch>
             {" "}
-            <Route exact path="/" render={() => <Landing> </Landing>} />
             <Route
               exact
               path="/profile"
@@ -83,14 +82,11 @@ class App extends Component {
                 <BoxDetails userInSession={loggedInUser} {...props} />
               )}
             />
+            <Route exact path="/main" render={() => <Main></Main>} />
             <Route
               path="/create"
               render={props => <CreateBox userInSession={loggedInUser} />}
             />
-            {/* <Route exact path="/test">
-              {" "}
-              {CustomTabs}
-            </Route> */}
           </Switch>
         </React.Fragment>
       );
@@ -121,14 +117,6 @@ class App extends Component {
               path="/boxes/:id"
               render={props => <BoxDetails {...props} />}
             />
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <div className="App">
-                  <Landing> </Landing>{" "}
-                </div>
-              )}
             />{" "}
             <Route
               path="/box/search/:box"

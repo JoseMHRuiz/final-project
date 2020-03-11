@@ -52,7 +52,6 @@ class BoxDetails extends Component {
       const { boxDetails } = this.state.box;
       const machinesArr = boxDetails.material.machines;
       const commentsObj = boxDetails.comments;
-
       const { userInSession } = this.props;
       const restArr = boxDetails.material.rest;
       return (
@@ -169,7 +168,9 @@ class BoxDetails extends Component {
                   </div>
                 </div>
                 <div className="tab-pane" id="messages">
-                  <CommentInput create={elm => this.postComment(elm)} />
+                  {userInSession && (
+                    <CommentInput create={elm => this.postComment(elm)} />
+                  )}
                   <CommentsContainerDetail
                     commentsArrDetails={commentsObj}
                   ></CommentsContainerDetail>

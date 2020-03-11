@@ -22,8 +22,8 @@ const CardMaterial = ({ name, img, qty, upTo, have }) => {
       <Wrapper className="card" img="img">
         <Container>
           <Title>{name}</Title>
-          <Title>{qty}</Title>
-          <Title>{upTo}</Title>
+          {qty && <Title>Qty: {qty}</Title>}
+          {upTo && <Title>Maximum: {upTo} KG</Title>}
         </Container>
       </Wrapper>
     )

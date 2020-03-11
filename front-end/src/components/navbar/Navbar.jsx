@@ -50,16 +50,15 @@ export default function NavbarCom(props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/boxes">
+            <LinkContainer className="transclass" to="/boxes">
               <Nav.Link>Boxes</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/main">
+            <LinkContainer className="transclass" to="/main">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/create">
+            <LinkContainer className="transclass" to="/create">
               <Nav.Link>Create</Nav.Link>
             </LinkContainer>
-            <Nav.Link href="/landing">Landing</Nav.Link>
           </Nav>
           <Nav>
             <SearchInput></SearchInput>
@@ -91,23 +90,22 @@ export default function NavbarCom(props) {
   } else {
     return (
       <Navbar className="navbar" sticky="top" variant="dark" expand="md">
-        <Navbar.Brand href="#home">SocialBox</Navbar.Brand>
+        <Navbar.Brand>
+          {" "}
+          <LinkContainer className="transclass" to="/main">
+            <Nav.Link>SocialBox</Nav.Link>
+          </LinkContainer>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <LinkContainer to="/boxes">
+            <LinkContainer className="transclass" to="/boxes">
               <Nav.Link>Boxes</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/main">
+            <LinkContainer className="transclass" to="/main">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/landing">
-              <Nav.Link>Landing</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/signup">
-              <Nav.Link>Signup</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/login">
+            <LinkContainer className="transclass" to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
           </Nav>

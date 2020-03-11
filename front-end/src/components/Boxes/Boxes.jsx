@@ -7,26 +7,35 @@ import FormControl from "react-bootstrap/FormControl";
 import IndexService from "../../services/IndexService";
 import { css } from "@emotion/core";
 import DotLoader from "react-spinners/ClipLoader";
+import Select from "react-select";
+import { Switch } from "@material-ui/core";
 
 const override = css`
   display: block;
   margin: 0 auto;
   border-color: red;
 `;
+const options = [
+  { label: "Can drop the bar", value: "dropBar" },
+  { label: "Kid class", value: "kidsClass" },
+  { label: "Affiliate", value: "affiliate" },
+  { label: "Beginners class", value: "juniorClass" },
+  { label: "Open box", value: "openBox" }
+];
 
 export default class Boxes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       initialItems: [],
-      items: [],
-      boxes: [],
-      allBoxes: {}
+      items: []
     };
     this.serviceBoxes = new IndexService();
     console.log(this.props);
   }
   filterList = event => {
+    console.log(event);
+
     let items = this.state.initialItems;
     items = items.filter(item => {
       return (
@@ -36,23 +45,40 @@ export default class Boxes extends React.Component {
     });
     this.setState({ items: items });
   };
+  filterListSelect = event => {
+    let items = this.state.initialItems;
+    console.log(event.value);
+    items = items.filter(item => {
+      switch (event.value) {
+        case "affiliate":
+          return item.affiliate;
+        case "dropBar":
+          return item.dropBar;
+        case "juniorClass":
+          return item.juniorClass;
+        case "openBox":
+          return item.openBox;
+        case "kidsClass":
+          return item.kidsClass;
+      }
+    });
+    console.log(items);
+    this.setState({ items: items });
+  };
 
   componentDidMount = () => {
     this.serviceBoxes.findAll().then(response => {
       this.setState({
-        allBoxes: response.boxes,
         initialItems: response.boxes,
-        items: response.boxes,
-        boxes: response.boxes
+        items: response.boxes
       });
     });
   };
 
   render() {
     const { items } = this.state;
-    const { allBoxes } = this.state;
     console.log(this.state);
-    if (allBoxes) {
+    if (items) {
       return (
         <div className="Boxes">
           <div className="card card-nav-tabs">
@@ -79,6 +105,15 @@ export default class Boxes extends React.Component {
                             onChange={this.filterList}
                           />
                         </Form>
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a>
+                        <Select
+                          options={options}
+                          onChange={this.filterListSelect}
+                          id="select-box"
+                        />
                       </a>
                     </li>
                   </ul>

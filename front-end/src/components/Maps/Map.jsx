@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker/Marker";
 
-
 const getMapOptions = maps => {
   return {
     disableDefaultUI: true,
@@ -41,7 +40,6 @@ class SimpleMap extends Component {
 
   render() {
     const { pos } = this.props;
-    console.log(process.env.REACT_APP_MAP_API_KEY);
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: "100%", width: "100%" }}>
@@ -59,7 +57,6 @@ class SimpleMap extends Component {
             draggable={true}
             text="My Marker"
             name="BoxName"
-            color="blue"
           />
         </GoogleMapReact>
       </div>

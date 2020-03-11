@@ -11,8 +11,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   paper: {
-    margin: "auto",
-    maxWidth: 300
+    minWidth: 300,
+    minHeight: 80,
+    padding: 1
   },
   image: {
     width: 30,
@@ -41,7 +42,7 @@ const CardCommentProfile = obj => {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container spacing={2}>
+        <Grid container>
           <Grid item>
             <Avatar
               className={classes.image}

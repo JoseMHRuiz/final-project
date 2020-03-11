@@ -2,24 +2,22 @@ import React from "react";
 import "./Profile.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import CommentsContainer from "./CommentsContainer";
+
 const Profile = props => {
   const { userInSession } = props;
   return (
-    <Card className="Profile main main-raised">
+    <Card id="profile-card" className="profile main main-raised">
       <div className="profile-content">
         <div className="container">
           <div className="row">
             <div className="col-md-6 ml-auto mr-auto">
               <div className="profile">
                 <div className="avatar col-md-6 ml-auto mr-auto">
-                  <img
-                    alt="name"
-                    src={userInSession.img}
-                    className="rounded-circle"
-                  />
+                  <Image alt="name" src={userInSession.img} fluid />
                 </div>
-                <div className="name">
+                <div className="name text-center">
                   <h3 className="title">{userInSession.username}</h3>
                 </div>
               </div>
@@ -38,22 +36,26 @@ const Profile = props => {
                   <li className="nav-item">
                     <Button
                       className="nav-link active"
+                      variant="secondary"
                       href="#box"
                       role="tab"
                       data-toggle="tab"
                     >
-                      <i className="material-icons">camera</i> Box
+                      {" "}
+                      Favorites
                     </Button>
                   </li>
 
                   <li className="nav-item">
                     <Button
                       className="nav-link"
+                      variant="secondary"
                       href="#comments"
                       role="tab"
                       data-toggle="tab"
                     >
-                      <i className="material-icons">favorite</i> Comments
+                      {" "}
+                      Comments
                     </Button>
                   </li>
                 </ul>

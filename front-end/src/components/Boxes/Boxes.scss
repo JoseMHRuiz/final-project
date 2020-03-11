@@ -7,7 +7,11 @@ div.card .card-header {
   border: 0;
   background: linear-gradient(60deg, #eee, #bdbdbd);
 }
-
+.badge-box-card {
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+}
 // .card-plain .card-header:not(.card-avatar) {
 //   margin-left: 0;
 //   margin-right: 0;
@@ -16,6 +20,10 @@ div.card .card-header {
 // .div.card .card-body {
 //   padding: 15px 30px;
 // }
+#select-box {
+  width: 200px;
+  height: 50px;
+}
 
 div.card .card-header-primary {
   background: linear-gradient(60deg, #b3b3b3, #636363);

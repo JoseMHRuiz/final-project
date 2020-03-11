@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Button, TextField } from "@material-ui/core";
+import { Button, TextField, Input } from "@material-ui/core";
 import { useForm } from "react-hook-form";
+import Form from "react-bootstrap/Form";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -27,9 +28,8 @@ export default function CommentInput(props) {
   const { register, handleSubmit } = useForm();
   const { create } = props;
   const onSubmit = data => {
-    // service.postComment(data, userInSession, boxId);
+    console.log(data);
     create(data);
-    // console.log(data);
   };
 
   return (
@@ -39,7 +39,7 @@ export default function CommentInput(props) {
       noValidate
       autoComplete="off"
     >
-      <TextField
+      <Form.Control
         name="commentForm"
         ref={register({ required: true, maxLength: 140 })}
         id="outlined-basic"
