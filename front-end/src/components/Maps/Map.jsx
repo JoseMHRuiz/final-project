@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GoogleMapReact from "google-map-react";
 import Marker from "./Marker/Marker";
 
+
 const getMapOptions = maps => {
   return {
     disableDefaultUI: true,
