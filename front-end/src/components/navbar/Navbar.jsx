@@ -7,7 +7,6 @@ import Nav from "react-bootstrap/Nav";
 import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import SplitButton from "react-bootstrap/SplitButton";
-import SearchInput from "../Search/SearchInput";
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -40,14 +39,10 @@ export default function NavbarCom(props) {
   if (userInSession) {
     console.log(userInSession);
     return (
-      <Navbar
-        className="navbar user-in-sesion"
-        sticky="top"
-        variant="dark"
-        expand="md"
-      >
-        <Navbar.Brand>SocialBox</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar className="navbar user-in-sesion" sticky="top" expand="md">
+        <LinkContainer className="transclass" to="/main">
+          <Nav.Link>SocialBox</Nav.Link>
+        </LinkContainer>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <LinkContainer className="transclass" to="/boxes">
@@ -61,7 +56,6 @@ export default function NavbarCom(props) {
             </LinkContainer>
           </Nav>
           <Nav>
-            <SearchInput></SearchInput>
             <ButtonToolbar>
               <SplitButton
                 variant="secundary"
@@ -89,7 +83,7 @@ export default function NavbarCom(props) {
     );
   } else {
     return (
-      <Navbar className="navbar" sticky="top" variant="dark" expand="md">
+      <Navbar className="navbar" sticky="top" expand="md">
         <Navbar.Brand>
           {" "}
           <LinkContainer className="transclass" to="/main">
@@ -105,13 +99,11 @@ export default function NavbarCom(props) {
             <LinkContainer className="transclass" to="/main">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
+          </Nav>
+          <Nav>
             <LinkContainer className="transclass" to="/login">
               <Nav.Link>Login</Nav.Link>
             </LinkContainer>
-          </Nav>
-          <Nav>
-            {/* <SearchStyled></SearchStyled> */}
-            <SearchInput></SearchInput>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

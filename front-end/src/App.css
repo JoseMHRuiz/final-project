@@ -4,7 +4,11 @@
 .row {
   margin-left: 0;
 }
-
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
 body,
 html {
   height: 100%;

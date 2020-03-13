@@ -1,5 +1,5 @@
 .navbar {
-  background-color: rgba(248, 248, 255, 0.2);
+  background-color: rgba(248, 248, 255, 0.721);
   backdrop-filter: blur(10px);
 }
 .searchBar {
@@ -7,13 +7,19 @@
 }
 
 nav.navbar-color-on-scroll {
-  background-color: rgba(248, 248, 255, 0.2);
-  backdrop-filter: blur(10px);
+  background-color: rgba(248, 248, 255, 0.885);
+  backdrop-filter: blur(1px);
 }
 
 .transclass {
   transform: matrix(1, 0, 0, 1, 0, 0);
   transition: transform 0.5s ease-in-out 0s;
+  color: black;
+}
+#transclass {
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: transform 0.5s ease-in-out 0s;
+  color: black;
 }
 
 .transclass:hover {

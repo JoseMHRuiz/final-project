@@ -113,26 +113,22 @@ export default class Boxes extends React.Component {
                 <div className="nav-tabs-wrapper">
                   <ul className="nav nav-tabs boxes" data-tabs="tabs">
                     <li className="nav-item">
-                      <a>
-                        <Form>
-                          <FormControl
-                            size="md"
-                            type="text"
-                            placeholder="Search by name"
-                            onChange={this.filterList}
-                          />
-                        </Form>
-                      </a>
+                      <Form>
+                        <FormControl
+                          size="md"
+                          type="text"
+                          placeholder="Search by name"
+                          onChange={this.filterList}
+                        />
+                      </Form>
                     </li>
                     <li className="nav-item">
-                      <a>
-                        <Select
-                          options={options}
-                          onChange={this.filterListSelect}
-                          label="Pick one to filter"
-                          id="select-box"
-                        />
-                      </a>
+                      <Select
+                        options={options}
+                        onChange={this.filterListSelect}
+                        label="Pick one to filter"
+                        id="select-box"
+                      />
                     </li>
                   </ul>
                 </div>

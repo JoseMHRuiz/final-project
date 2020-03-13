@@ -6,7 +6,7 @@ import "./Login.scss";
 import { TextField } from "@material-ui/core";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
-
+import history from "../../history";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -28,6 +28,7 @@ class Login extends Component {
           password: password,
           error: false
         });
+        history.push("/main");
         this.props.getUser(response);
       })
       .catch(error => {
@@ -58,13 +59,13 @@ class Login extends Component {
                   <div className="card-header card-header-primary text-center">
                     <h4 className="card-title">Login</h4>
                     <div className="social-line">
-                      <a href="#pablo" className="btn btn-just-icon btn-link">
+                      <a href="#box" className="btn btn-just-icon btn-link">
                         <i className="fa fa-facebook-square"></i>
                       </a>
-                      <a href="#pablo" className="btn btn-just-icon btn-link">
+                      <a href="#box" className="btn btn-just-icon btn-link">
                         <i className="fa fa-twitter"></i>
                       </a>
-                      <a href="#pablo" className="btn btn-just-icon btn-link">
+                      <a href="#box" className="btn btn-just-icon btn-link">
                         <i className="fa fa-google-plus"></i>
                       </a>
                     </div>
@@ -77,7 +78,6 @@ class Login extends Component {
                         name="username"
                         value={this.state.username}
                         onChange={e => this.handleChange(e)}
-                        id="outlined-basic"
                         label="Username"
                         variant="outlined"
                       />
@@ -89,7 +89,6 @@ class Login extends Component {
                         className="form-control"
                         value={this.state.password}
                         onChange={e => this.handleChange(e)}
-                        id="outlined-basic"
                         label="Password"
                         variant="outlined"
                       />

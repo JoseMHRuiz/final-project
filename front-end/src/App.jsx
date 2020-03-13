@@ -13,6 +13,7 @@ import BoxDetails from "./components/BoxDetails/BoxDetails";
 import IndexService from "./services/IndexService";
 import Search from "./components/Search/Search";
 import CreateBox from "./components/createBox/createBox";
+import history from "./history";
 
 class App extends Component {
   constructor(props) {
@@ -33,12 +34,14 @@ class App extends Component {
     this.setState({
       loggedInUser: userObj
     });
+    this.fetchUserProf();
   };
   logout = () => {
     this.service.logout().then(() => {
       this.setState({
         loggedInUser: null
       });
+      history.push("/main");
     });
   };
   fetchUser() {
