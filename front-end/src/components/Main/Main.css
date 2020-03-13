@@ -3,6 +3,7 @@
   margin: 5%;
   background-color: rgba(248, 248, 255, 0.2);
   padding: 6%;
+  padding-bottom: 10%;
   position: relative;
   backdrop-filter: blur(10px);
   max-height: 50%;

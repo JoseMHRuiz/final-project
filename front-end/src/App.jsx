@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./components/auth/Signup";
+import Footer from "./components/Footer/Footer";
 import Login from "./components/auth/Login";
 import AuthService from "./services/AuthService";
 import NavbarCom from "./components/Navbar/Navbar";
@@ -139,6 +140,7 @@ class App extends Component {
               )}
             />
           </Switch>{" "}
+          <Footer />
         </div>
       );
     }
