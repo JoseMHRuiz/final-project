@@ -4,7 +4,7 @@ import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   credentialsContainer: {
-    position: "relative",
+    display: "flex",
     height: "100%"
   },
   paper: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)"
   },
   title: {
-    width: 200,
+    width: "19rem",
     fontSize: 30
   },
   head: {

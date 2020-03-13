@@ -137,7 +137,7 @@ export default class Boxes extends React.Component {
             <div className="card-body ">
               <div className="tab-content text-center">
                 <div className="tab-pane active" id="profile">
-                  <div className="cont-box-card">
+                  <div className="mini-data row cont-box-card">
                     {items.map(box => (
                       <BoxCard
                         key={box._id}

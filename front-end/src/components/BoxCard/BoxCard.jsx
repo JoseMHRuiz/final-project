@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import { makeStyles } from "@material-ui/core/styles";
-import { Paper } from "@material-ui/core";
+import { Paper, Container } from "@material-ui/core";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import Button from "react-bootstrap/Button";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
+import { white } from "color-name";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,11 +18,11 @@ const useStyles = makeStyles(theme => ({
     width: "19%",
     margin: "11px 11px 0 0",
     marginBottom: 0,
-    background: "45deg, rgb(255, 255, 255) 30%, rgb(180, 180, 180) 90%",
+    background: "#fff",
     borderRadius: 3,
     border: 0,
     color: "black",
-    height: 200,
+    height: "13rem",
     padding: "5 30px",
     boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)",
     position: "relative"
@@ -42,7 +43,7 @@ const useStyles = makeStyles(theme => ({
   badgeContainer: {
     position: "absolute",
     fontSize: 15,
-    top: "55%",
+    top: "50%",
     margin: "0 1%"
   },
   badge: {
@@ -59,8 +60,8 @@ const useStyles = makeStyles(theme => ({
     position: "absolute",
     top: "4%",
     left: "4%",
-    height: "60%",
-    width: "auto"
+    height: "auto",
+    width: "60%"
   }
 }));
 const BoxCard = props => {
@@ -78,7 +79,7 @@ const BoxCard = props => {
 
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Container id="card-boxes " className={classes.paper}>
       <Card.Img className={classes.img} src={img[0]} />
       {props.userInSession && (
         <Button
@@ -102,7 +103,7 @@ const BoxCard = props => {
           <MoreHorizIcon />
         </Link>
       </Card.Text>
-    </Paper>
+    </Container>
   );
 };
 
