@@ -15,14 +15,12 @@ class SearchInput extends Component {
 
   handleChange(event) {
     const newValueSearch = event.target.value;
-    console.log(newValueSearch);
     this.setState({
       search: newValueSearch
     });
   }
 
   handleSubmit(event) {
-    console.log(this.state.search);
     event.preventDefault();
     this.setState({
       redirect: `/box/search/${this.state.search}`

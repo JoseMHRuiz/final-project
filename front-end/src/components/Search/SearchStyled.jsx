@@ -62,7 +62,7 @@ function SearchStyled() {
     setBarOpened(false);
     // props.history.push("/thank-you");
     // props.history.push(`/box/search/${input}`);
-    console.log(`Form was submited with input: ${input}`);
+    // console.log(`Form was submited with input: ${input}`);
   };
   //   const onFormSubmit = event => {
   //     event.preventDefault();

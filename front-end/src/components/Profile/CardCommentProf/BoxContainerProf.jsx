@@ -20,9 +20,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function BoxContainerProf(user) {
   const classes = useStyles();
-  console.log(user);
+
   const { favs } = user;
-  console.log(favs);
+
   return favs ? (
     <Grid container className={classes.root}>
       <Grid item xs={12}>

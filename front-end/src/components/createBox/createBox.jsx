@@ -37,9 +37,9 @@ export default class App extends Component {
     // const newValueSearch = event.target.value;
     // console.log(event.target);
     //   console.log(this.state);
-    console.log(event);
+    // console.log(event);
     // this.setState({});
-    console.log(this.state);
+    // console.log(this.state);
   };
   handleSubmit(event) {
     // console.log(this.state);

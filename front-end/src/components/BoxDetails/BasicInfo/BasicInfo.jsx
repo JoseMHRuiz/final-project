@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function BasicInfoContainer(props) {
   const classes = useStyles();
-  console.log(props);
+
   return (
     <Grid container className={classes.root}>
       {props.affiliate && (

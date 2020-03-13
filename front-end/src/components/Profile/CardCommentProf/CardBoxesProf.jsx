@@ -75,7 +75,6 @@ const BoxCard = props => {
     kidsClass,
     favColor
   } = props.fav;
-  console.log(props);
   const classes = useStyles();
   return (
     <Paper className={classes.paperprof}>

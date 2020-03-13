@@ -19,7 +19,6 @@ const CheckboxExample = () => (
       }}
       onSubmit={async values => {
         // await sleep(1);
-        console.log(values);
       }}
     >
       {({ isSubmitting, handleChange, handleBlur, handleSubmit }) => (

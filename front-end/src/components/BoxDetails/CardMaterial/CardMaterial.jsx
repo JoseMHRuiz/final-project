@@ -32,7 +32,6 @@ const Wrapper = styled.div`
   background-size: cover;
 `;
 const CardMaterial = ({ name, img, qty, upTo, have }) => {
-  console.log(img);
   return (
     have && (
       <Wrapper img={img}>

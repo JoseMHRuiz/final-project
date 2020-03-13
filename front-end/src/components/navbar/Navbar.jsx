@@ -33,16 +33,13 @@ export default function NavbarCom(props) {
   const handleLogout = e => {
     props.logout();
   };
-  // const handleLogin = e => {
-  //   getUser();
-  // };
   if (userInSession) {
-    console.log(userInSession);
     return (
-      <Navbar className="navbar user-in-sesion" sticky="top" expand="md">
+      <Navbar className="navbar" sticky="top" expand="md">
         <LinkContainer className="transclass" to="/">
           <Nav.Link>SocialBox</Nav.Link>
         </LinkContainer>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <LinkContainer className="transclass" to="/boxes">
@@ -56,27 +53,29 @@ export default function NavbarCom(props) {
             </LinkContainer>
           </Nav>
           <Nav>
-            <ButtonToolbar>
-              <SplitButton
-                variant="secundary"
-                drop="left"
-                id="dropdown-split-variants-secundary"
-                title={
-                  <Avatar
-                    alt={userInSession.username}
-                    src={userInSession.img}
-                    className={classes.small}
-                  />
-                }
-              >
-                <LinkContainer to="/profile">
-                  <Dropdown.Item>Profile</Dropdown.Item>
-                </LinkContainer>
+            <Nav.Link>
+              <ButtonToolbar>
+                <SplitButton
+                  variant="secundary"
+                  drop="left"
+                  id="dropdown-split-variants-secundary"
+                  title={
+                    <Avatar
+                      alt={userInSession.username}
+                      src={userInSession.img}
+                      className={classes.small}
+                    />
+                  }
+                >
+                  <LinkContainer to="/profile">
+                    <Dropdown.Item>Profile</Dropdown.Item>
+                  </LinkContainer>
 
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-              </SplitButton>
-            </ButtonToolbar>
+                  <Dropdown.Divider />
+                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+                </SplitButton>
+              </ButtonToolbar>
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -84,12 +83,9 @@ export default function NavbarCom(props) {
   } else {
     return (
       <Navbar className="navbar" sticky="top" expand="md">
-        <Navbar.Brand>
-          {" "}
-          <LinkContainer className="transclass" to="/">
-            <Nav.Link>SocialBox</Nav.Link>
-          </LinkContainer>
-        </Navbar.Brand>
+        <LinkContainer className="transclass" to="/">
+          <Nav.Link>SocialBox</Nav.Link>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

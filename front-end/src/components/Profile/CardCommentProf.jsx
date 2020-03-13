@@ -35,7 +35,6 @@ const CardCommentProfile = obj => {
   const { userInSession } = obj;
   const services = new IndexService();
   const deleteComm = com => {
-    console.log(com);
     services.deleteComment(com);
   };
 

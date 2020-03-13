@@ -42,7 +42,6 @@ const useStyles = makeStyles(theme => ({
 export default function BasicInfoContainerCoach(props) {
   const classes = useStyles();
   const { coach } = props;
-  console.log(coach);
   return (
     <Container className={classes.credentialsContainer}>
       <div className={classes.minMax}>

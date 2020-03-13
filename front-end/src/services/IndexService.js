@@ -26,8 +26,6 @@ class IndexService {
       .then(response => response.data);
   };
   deleteComment = comment => {
-    console.log("services");
-    console.log(comment);
     return this.service
       .post("/deleteComment", {
         comment
@@ -35,9 +33,6 @@ class IndexService {
       .then(response => response.data);
   };
   addfav = (box, user) => {
-    console.log("services");
-    console.log(box);
-    console.log(user);
     return this.service
       .post("/addfav", { box, user })
       .then(response => response.data);
