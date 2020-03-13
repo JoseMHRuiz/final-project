@@ -40,7 +40,7 @@ export default function NavbarCom(props) {
     console.log(userInSession);
     return (
       <Navbar className="navbar user-in-sesion" sticky="top" expand="md">
-        <LinkContainer className="transclass" to="/main">
+        <LinkContainer className="transclass" to="/">
           <Nav.Link>SocialBox</Nav.Link>
         </LinkContainer>
         <Navbar.Collapse id="basic-navbar-nav">
@@ -48,7 +48,7 @@ export default function NavbarCom(props) {
             <LinkContainer className="transclass" to="/boxes">
               <Nav.Link>Boxes</Nav.Link>
             </LinkContainer>
-            <LinkContainer className="transclass" to="/main">
+            <LinkContainer className="transclass" to="/">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
             <LinkContainer className="transclass" to="/create">
@@ -86,7 +86,7 @@ export default function NavbarCom(props) {
       <Navbar className="navbar" sticky="top" expand="md">
         <Navbar.Brand>
           {" "}
-          <LinkContainer className="transclass" to="/main">
+          <LinkContainer className="transclass" to="/">
             <Nav.Link>SocialBox</Nav.Link>
           </LinkContainer>
         </Navbar.Brand>
@@ -96,7 +96,7 @@ export default function NavbarCom(props) {
             <LinkContainer className="transclass" to="/boxes">
               <Nav.Link>Boxes</Nav.Link>
             </LinkContainer>
-            <LinkContainer className="transclass" to="/main">
+            <LinkContainer className="transclass" to="/">
               <Nav.Link>Main</Nav.Link>
             </LinkContainer>
           </Nav>

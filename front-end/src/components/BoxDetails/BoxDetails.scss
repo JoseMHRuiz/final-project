@@ -4,6 +4,11 @@
   .card-body {
     min-height: 75vh;
   }
+  .schedule-title {
+    position: absolute;
+    top: 63%;
+    left: 12%;
+  }
 }
 
 .data {
@@ -30,10 +35,23 @@
     min-height: 33%;
     padding: 3%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+  }
+  .schedule-child {
+    margin: 10px 40px 0 0;
+  }
+  div.card {
+    margin-right: 5px;
   }
 }
-
+#card-box-details {
+  margin-right: 20px;
+}
+#prices {
+  position: absolute;
+  left: 20%;
+  top: 63%;
+}
 .mini-basic {
   display: flex;
   flex-direction: column;

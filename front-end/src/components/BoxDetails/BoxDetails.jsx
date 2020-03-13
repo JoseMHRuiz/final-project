@@ -11,6 +11,10 @@ import BasicInfoContainer from "./BasicInfo/BasicInfo";
 import BasicInfoContainerCoach from "./BasicInfo/BasicInfoCoach";
 import { css } from "@emotion/core";
 import DotLoader from "react-spinners/PacmanLoader";
+import EuroIcon from "@material-ui/icons/Euro";
+import ScheduleIcon from "@material-ui/icons/Schedule";
+import InfoIcon from "@material-ui/icons/Info";
+import AccessibilityNewIcon from "@material-ui/icons/AccessibilityNew";
 
 const override = css`
   display: block;
@@ -87,7 +91,7 @@ class BoxDetails extends Component {
                         href="#messages"
                         data-toggle="tab"
                       >
-                        <i className="material-icons">chat</i> Messages
+                        <i className="material-icons">chat</i> Comments
                       </a>
                     </li>
                     <li className="nav-item">
@@ -101,13 +105,15 @@ class BoxDetails extends Component {
               <div className="tab-content text-center">
                 <div className="tab-pane active" id="profile">
                   <div className="row">
-                    <Card className="col data">
+                    <Card id="card-box-details" className="col data">
                       <div className="map">
                         <SimpleMap pos={boxDetails.position} marker={true} />
                       </div>
-                      <h4>Schedule</h4>
+                      <h4 className="schedule-title">
+                        Schedule <ScheduleIcon />{" "}
+                      </h4>
                       <div className="schedule">
-                        <div>
+                        <div className="schedule-child">
                           <div>
                             <h5>Monday-Friday</h5>
                             <small>
@@ -119,7 +125,7 @@ class BoxDetails extends Component {
                             </small>
                           </div>
                         </div>
-                        <div>
+                        <div className="schedule-child">
                           <div>
                             <h5>Saturday</h5>
                             <small>{boxDetails.schedule.saturday.start}</small>
@@ -133,15 +139,28 @@ class BoxDetails extends Component {
                             <small>{boxDetails.schedule.sunday.end}</small>
                           </div>
                         </div>
+                        <div id="prices" className="data-coaches">
+                          <h3>
+                            Prices <EuroIcon />
+                          </h3>
+                          <div>
+                            <div>Drop-In: {boxDetails.prices.dropin} €</div>
+                            <div>Full: {boxDetails.prices.fullMonth} €</div>
+                          </div>
+                        </div>
                       </div>
                     </Card>
-                    <Card className="col data">
+                    <Card id="card-box-details" className="col data">
                       <div className="mini-basic">
-                        <h3>Basic</h3>
+                        <h3>
+                          Basic <InfoIcon />{" "}
+                        </h3>
                         <BasicInfoContainer {...boxDetails} />
                       </div>
                       <div className="data-coaches">
-                        <h3>Coaches</h3>
+                        <h3>
+                          Coaches <AccessibilityNewIcon />{" "}
+                        </h3>
                         <div>
                           <BasicInfoContainerCoach {...boxDetails} />
                         </div>
