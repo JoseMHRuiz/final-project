@@ -2,14 +2,12 @@ import React from "react";
 import "./Boxes.scss";
 import BoxCard from "../BoxCard/BoxCard";
 import Form from "react-bootstrap/Form";
-// import { FormControl, Input } from "@material-ui/core";
 import FormControl from "react-bootstrap/FormControl";
 import IndexService from "../../services/IndexService";
+import AuthService from "../../services/AuthService";
 import { css } from "@emotion/core";
 import DotLoader from "react-spinners/ClipLoader";
 import Select from "react-select";
-import { Switch } from "@material-ui/core";
-
 const override = css`
   display: block;
   margin: 0 auto;
@@ -28,14 +26,23 @@ export default class Boxes extends React.Component {
     super(props);
     this.state = {
       initialItems: [],
-      items: []
+      items: [],
+      favActive: [],
+      isFaved: false,
+      loggedInUser: null
     };
+    this.service = new AuthService();
     this.serviceBoxes = new IndexService();
-    console.log(this.props);
   }
-  filterList = event => {
-    console.log(event);
 
+  myColor = box => {
+    if (this.state.favActive.includes(box)) {
+      return "error";
+    }
+    return "disabled";
+  };
+
+  filterList = event => {
     let items = this.state.initialItems;
     items = items.filter(item => {
       return (
@@ -47,7 +54,6 @@ export default class Boxes extends React.Component {
   };
   filterListSelect = event => {
     let items = this.state.initialItems;
-    console.log(event.value);
     items = items.filter(item => {
       switch (event.value) {
         case "affiliate":
@@ -62,46 +68,57 @@ export default class Boxes extends React.Component {
           return item.kidsClass;
       }
     });
-    console.log(items);
     this.setState({ items: items });
   };
-
-  componentDidMount = () => {
+  fetchAll = () => {
     this.serviceBoxes.findAll().then(response => {
       this.setState({
         initialItems: response.boxes,
         items: response.boxes
       });
     });
+    this.fetchUser();
   };
-
+  fetchUser() {
+    return this.service
+      .loggedin()
+      .then(response => {
+        this.setState({
+          loggedInUser: response,
+          favActive: response.favs
+          // positionArr: response.favs
+        });
+      })
+      .catch(err => {
+        this.setState({
+          loggedInUser: false
+        });
+      });
+  }
+  addfav = box => {
+    const { _id } = this.state.loggedInUser;
+    this.serviceBoxes.addfav(box, _id).then(() => {
+      this.fetchAll();
+    });
+  };
+  componentDidMount = () => this.fetchAll();
   render() {
     const { items } = this.state;
-    console.log(this.state);
     if (items) {
       return (
         <div className="Boxes">
-          <div className="card card-nav-tabs">
-            <div className="card-header card-header-primary">
+          <div id="card-nav-tabs" className="card card-nav-tabs">
+            <div id="card-header" className="card-header-primary">
               <div className="nav-tabs-navigation">
                 <div className="nav-tabs-wrapper">
                   <ul className="nav nav-tabs boxes" data-tabs="tabs">
                     <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        href="#profile"
-                        data-toggle="tab"
-                      >
-                        <i className="material-icons">face</i> Boxes
-                      </a>
-                    </li>
-                    <li className="nav-item">
                       <a>
                         <Form>
                           <FormControl
-                            size="lg"
+                            size="md"
                             type="text"
-                            placeholder="Search"
+                            placeholder="Search by name"
                             onChange={this.filterList}
                           />
                         </Form>
@@ -112,6 +129,7 @@ export default class Boxes extends React.Component {
                         <Select
                           options={options}
                           onChange={this.filterListSelect}
+                          label="Pick one to filter"
                           id="select-box"
                         />
                       </a>
@@ -125,7 +143,14 @@ export default class Boxes extends React.Component {
                 <div className="tab-pane active" id="profile">
                   <div className="cont-box-card">
                     {items.map(box => (
-                      <BoxCard key={box._id} {...box} box />
+                      <BoxCard
+                        key={box._id}
+                        addfav={this.addfav}
+                        favColor={this.myColor}
+                        userInSession={this.state.loggedInUser}
+                        {...box}
+                        box
+                      />
                     ))}
                   </div>
                 </div>

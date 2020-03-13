@@ -21,6 +21,12 @@ const userSchema = new Schema(
         ref: "comment"
       }
     ],
+    favs: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "box"
+      }
+    ],
     property: [
       {
         type: Schema.Types.ObjectId,

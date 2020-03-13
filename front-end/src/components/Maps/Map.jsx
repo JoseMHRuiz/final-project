@@ -26,7 +26,7 @@ class SimpleMap extends Component {
       lat: "",
       lng: ""
     },
-    zoom: 9
+    zoom: 13
   };
   componentDidMount() {
     this.setState(prevState => ({
@@ -47,7 +47,7 @@ class SimpleMap extends Component {
           bootstrapURLKeys={{
             key: process.env.REACT_APP_MAP_API_KEY
           }}
-          defaultCenter={this.state.center}
+          center={this.state.box}
           defaultZoom={this.state.zoom}
           options={getMapOptions}
         >

@@ -19,6 +19,7 @@ class App extends Component {
     super(props);
     this.state = {
       loggedInUser: null,
+      loggedInUserProf: null,
       allBoxes: {},
       _onlyOne: {}
     };
@@ -26,6 +27,7 @@ class App extends Component {
     this.serviceBoxes = new IndexService();
 
     this.fetchUser();
+    this.fetchUserProf();
   }
   getUser = userObj => {
     this.setState({
@@ -53,41 +55,57 @@ class App extends Component {
         });
       });
   }
+  fetchUserProf() {
+    return this.service
+      .loggedinProfile()
+      .then(response => {
+        this.setState({
+          loggedInUserProf: response
+        });
+      })
+      .catch(err => {
+        this.setState({
+          loggedInUserProf: false
+        });
+      });
+  }
 
   render() {
     const { loggedInUser } = this.state;
+    const { loggedInUserProf } = this.state;
     const { logout } = this;
     if (loggedInUser) {
       return (
-        <React.Fragment>
+        <Switch>
           <div className="App">
             <NavbarCom
               userInSession={loggedInUser}
               getUser={this.getUser}
               logout={logout}
             />{" "}
-          </div>{" "}
-          <Switch>
-            {" "}
+            <Route exact path="/main" render={() => <Main></Main>} />
             <Route
               exact
               path="/profile"
-              render={() => <Profile userInSession={loggedInUser} />}
+              render={() => <Profile userInSession={loggedInUserProf} />}
             />
-            <Route exact path="/boxes" render={() => <Boxes></Boxes>} />
+            <Route
+              exact
+              path="/boxes"
+              render={() => <Boxes userInSession={loggedInUser}></Boxes>}
+            />
             <Route
               path="/boxes/:id"
               render={props => (
                 <BoxDetails userInSession={loggedInUser} {...props} />
               )}
             />
-            <Route exact path="/main" render={() => <Main></Main>} />
             <Route
               path="/create"
               render={props => <CreateBox userInSession={loggedInUser} />}
             />
-          </Switch>
-        </React.Fragment>
+          </div>
+        </Switch>
       );
     } else {
       return (
@@ -105,13 +123,7 @@ class App extends Component {
               render={() => <Login getUser={this.getUser} />}
             />
             <Route exact path="/main" render={() => <Main></Main>} />
-            <Route
-              exact
-              path="/boxes"
-              render={() => (
-                <Boxes getOneById={id => this._onlyOne(id)}></Boxes>
-              )}
-            />
+            <Route exact path="/boxes" render={() => <Boxes></Boxes>} />
             <Route
               path="/boxes/:id"
               render={props => <BoxDetails {...props} />}

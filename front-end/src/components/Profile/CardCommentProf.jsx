@@ -46,7 +46,7 @@ const CardCommentProfile = obj => {
           <Grid item>
             <Avatar
               className={classes.image}
-              alt="Cindy Baker"
+              alt="Profile"
               src={userInSession.img}
             />
           </Grid>

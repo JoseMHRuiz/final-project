@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
-
+import CommentIcon from "@material-ui/icons/Comment";
+import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+import ControlPointIcon from "@material-ui/icons/ControlPoint";
 import "./Main.css";
-import { Card, Link } from "@material-ui/core";
+import { Card } from "@material-ui/core";
 import Button from "react-bootstrap/Button";
 
 class Main extends Component {
@@ -13,9 +15,9 @@ class Main extends Component {
           <div className="page-header header-filter" data-parallax="true">
             <div className="container">
               <div className="row">
-                <div className="col-md-6 mr-auto ml-auto">
+                <div className="mr-auto ml-auto">
                   <h1 className="title text-center main">
-                    Your Story Starts With Us.
+                    Your Story Starts With Us
                   </h1>
                   <h4 className="text-center">
                     This is a website to find boxes that meet your requirements
@@ -32,11 +34,11 @@ class Main extends Component {
               </div>
             </div>
           </div>
-          <div className="main main-raised">
+          <div id="text-central-main" className="main main-raised">
             <div className="container">
               <div className="section text-center">
                 <div className="row">
-                  <div className="col-md-8 ml-auto mr-auto">
+                  <div className=" ml-auto mr-auto">
                     <h2 className="title">Differents type of filter</h2>
                     <h5 className="description">
                       You can search by filtering the boxes. If they let you
@@ -51,7 +53,7 @@ class Main extends Component {
                     <div className="col-md-4">
                       <div className="info">
                         <div className="icon icon-info">
-                          <i className="material-icons">chat</i>
+                          <CommentIcon />
                         </div>
                         <h4 className="info-title">Comment</h4>
                         <p>
@@ -63,7 +65,7 @@ class Main extends Component {
                     <div className="col-md-4">
                       <div className="info">
                         <div className="icon icon-success">
-                          <i className="material-icons">verified_user</i>
+                          <PeopleAltIcon />
                         </div>
                         <h4 className="info-title">Coaches</h4>
                         <p>You can see the official certifications they have</p>
@@ -72,7 +74,7 @@ class Main extends Component {
                     <div className="col-md-4">
                       <div className="info">
                         <div className="icon icon-danger">
-                          <i className="material-icons">fingerprint</i>
+                          <ControlPointIcon />{" "}
                         </div>
                         <h4 className="info-title">More info comming</h4>
                         <p>

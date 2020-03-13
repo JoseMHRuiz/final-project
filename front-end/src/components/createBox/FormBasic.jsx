@@ -33,7 +33,6 @@ const CheckboxExample = () => (
               type="text"
               name="boxName"
               placeholder="Box Name"
-              type="text"
               id="boxName"
             />
           </Label>
@@ -45,7 +44,6 @@ const CheckboxExample = () => (
               type="text"
               name="area"
               placeholder="Area in m2"
-              type="text"
               id="area"
             />
           </Label>
@@ -57,7 +55,6 @@ const CheckboxExample = () => (
               type="text"
               name="city"
               placeholder="City"
-              type="text"
               id="box-name"
             />
           </Label>

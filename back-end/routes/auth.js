@@ -87,6 +87,28 @@ router.get("/currentuser", (req, res, next) => {
     next(new Error("Not logged in"));
   }
 });
+router.get("/currentuserprofile", (req, res, next) => {
+  if (req.user) {
+    // console.log(req.user);
+    User.findById(req.user._id)
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+          model: "User"
+        }
+      })
+      .populate({
+        path: "favs"
+      })
+      .then(user => {
+        console.log(user);
+        res.status(200).json(user);
+      });
+  } else {
+    next(new Error("Not logged in"));
+  }
+});
 
 router.get("/logout", (req, res) => {
   req.logout();

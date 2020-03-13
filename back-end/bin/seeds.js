@@ -1,7 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-// let faker = require("faker");
-let faker = require("faker/locale/es");
+let faker = require("faker");
 const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 const User = require("../models/User");
@@ -127,7 +126,7 @@ dbConnect(() => {
     "https://images.unsplash.com/photo-1556817411-92f5ec899a55?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80",
     "https://images.unsplash.com/photo-1533681475364-326b6803d677?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3900&q=80"
   ];
-  const fakeComment = Array(100)
+  const fakeComment = Array(20)
     .fill()
     .map(() => {
       counter++;
@@ -151,7 +150,7 @@ dbConnect(() => {
 
   counter = -2;
   let counter2 = 0;
-  const fakeBox = Array(50)
+  const fakeBox = Array(10)
     .fill()
     .map(() => {
       counter += 2;
@@ -199,79 +198,107 @@ dbConnect(() => {
             {
               name: "airunner",
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
-              qty: randomInt(0, 12)
+              qty: randomInt(0, 12),
+              img:
+                "https://smhttp-ssl-18062.nexcesscdn.net/media/prod.image/a/i/air-runner-4.jpg"
             },
             {
               name: "airbike",
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
-              qty: randomInt(0, 12)
+              qty: randomInt(0, 12),
+              img:
+                "https://www.roguefitness.com/media/wysiwyg/01_MaxStability.jpg"
             },
             {
               name: "skyerg",
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
-              qty: randomInt(0, 12)
+              qty: randomInt(0, 12),
+              img:
+                "https://www.rogueeurope.eu/media/wysiwyg/Ski-erg-advanced-content3-construction.jpg"
             },
             {
               name: "bikeerg",
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
-              qty: randomInt(0, 12)
+              qty: randomInt(0, 12),
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/c/o/concept2-bike-erg-web3.jpg"
             },
             {
               name: "rowerg",
               have: trueFlase[randomInt(0, trueFlase.length - 1)],
-              qty: randomInt(0, 12)
+              qty: randomInt(0, 12),
+              img:
+                "https://www.rogueeurope.eu/media/catalog/product/cache/5/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/c/o/concept2-black-rower-2_2_2.jpg"
             }
           ],
           rest: [
             {
               name: "dumbbell",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.rogueeurope.eu/media/catalog/product/cache/5/rogue_header_2015/1536x/472321edac810f9b2465a359d8cdc0b5/x/x/xx7447-lg_1.jpg"
             },
             {
               name: "kettlebell",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/r/o/rogue-competition-kettlebells-web16.jpg"
             },
             {
               name: "medball",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/rogue_header_2015/1536x/472321edac810f9b2465a359d8cdc0b5/r/a/ra0730-lg.jpg"
             },
             {
               name: "dball",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/rogue_header_2015/1536x/472321edac810f9b2465a359d8cdc0b5/r/u/rubber-medball-h.jpg"
             },
             {
               name: "sandbag",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/rogue_header_2015/1536x/472321edac810f9b2465a359d8cdc0b5/c/u/cub-sm-sandbag-h.jpg"
             },
             {
               name: "yoke",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/m/i/mike-jenkins-6-web_1.jpg"
             },
             {
               name: "sleed",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img: "https://www.roguefitness.com/media/ds-highbar.jpg"
             },
             {
               name: "ghd",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/g/h/ghd-3_1_4.jpg"
             },
             {
               name: "barbells",
               upTo: randomKg[randomInt(0, randomKg.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img: "https://www.roguefitness.com/media/wysiwyg/AC-C.jpg"
             },
             {
               name: "foamroller",
               upTo: dropInPrices[randomInt(0, dropInPrices.length - 1)],
-              have: trueFlase[randomInt(0, trueFlase.length - 1)]
+              have: trueFlase[randomInt(0, trueFlase.length - 1)],
+              img:
+                "https://www.roguefitness.com/media/catalog/product/cache/1/image/1500x1500/472321edac810f9b2465a359d8cdc0b5/r/o/rogue-foam-rollers-2.0-web3_1.jpg"
             },
             ,
           ]

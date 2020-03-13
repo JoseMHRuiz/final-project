@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import CardCommentProfile from "./CardCommentProf";
+import BoxCard from "./CardBoxesProf";
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -12,25 +13,23 @@ const useStyles = makeStyles(theme => ({
   paper: {
     maxHeight: 100,
     minHeight: 100,
-    width: 350,
-    margin: 1
+    width: 200,
+    margin: "5px 5px 0 0"
   }
 }));
 
-export default function CommentsContainer(user) {
+export default function BoxContainerProf(user) {
   const classes = useStyles();
-  const { comments } = user;
-  return comments ? (
+  console.log(user);
+  const { favs } = user;
+  console.log(favs);
+  return favs ? (
     <Grid container className={classes.root}>
       <Grid item xs={12}>
         <Grid container justify="center">
-          {comments.map((comment, idx) => (
+          {favs.map((fav, idx) => (
             <Grid className={classes.paper} key={idx} item>
-              <CardCommentProfile
-                key={idx}
-                comment={comment}
-                userInSession={user}
-              />
+              <BoxCard key={idx} fav={fav} />
             </Grid>
           ))}
         </Grid>

@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Card from "react-bootstrap/Card";
-import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,16 +12,31 @@ const useStyles = makeStyles(theme => ({
     margin: "0.5%",
     marginBottom: 0,
     background:
-      "linear-gradient(45deg, rgb(172, 172, 172) 30%, rgb(97, 97, 97) 90%)",
+      "linear-gradient(45deg, rgb(255, 255, 255) 30%, rgb(235, 235, 235) 90%)",
     borderRadius: 3,
     border: 0,
-    color: "white",
+    color: "black",
     height: 48,
     padding: "10px 20px 0 20px",
     boxShadow: "0 3px 5px 2px rgba(97, 97, 97, 0.3)"
   },
   control: {
     padding: theme.spacing(2)
+  },
+  title: {
+    width: 200,
+    fontSize: 30
+  },
+  head: {
+    fontSize: 20
+  },
+  minMax: {
+    position: "absolute",
+    left: "6%"
+  },
+  rest: {
+    position: "absolute",
+    left: "60%"
   }
 }));
 

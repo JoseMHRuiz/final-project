@@ -65,14 +65,16 @@ const boxSchema = new Schema(
         {
           name: String,
           have: Boolean,
-          qty: Number
+          qty: Number,
+          img: String
         }
       ],
       rest: [
         {
           name: String,
           have: Boolean,
-          upTo: Number
+          upTo: Number,
+          img: String
         }
       ]
     },

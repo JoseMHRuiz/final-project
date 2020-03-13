@@ -13,8 +13,8 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     margin: "2%"
   },
-  paper: {
-    width: "19%",
+  paperprof: {
+    width: "100%",
     margin: "11px 11px 0 0",
     marginBottom: 0,
     background: "45deg, rgb(255, 255, 255) 30%, rgb(180, 180, 180) 90%",
@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   link: {
     position: "absolute",
     top: "90%",
-    left: "1%",
+    left: "80%",
     color: "black"
   },
   img: {
@@ -74,11 +74,11 @@ const BoxCard = props => {
     openBox,
     kidsClass,
     favColor
-  } = props;
-
+  } = props.fav;
+  console.log(props);
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paperprof}>
       <Card.Img className={classes.img} src={img[0]} />
       {props.userInSession && (
         <Button

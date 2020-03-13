@@ -273,14 +273,26 @@ router.get("/filter-box/:idBox/details", (req, res, next) => {
     .catch(err => console.log(err));
 });
 
-// // This is used by axios request for markers on map:
-// router.get('/box/details/api', (req, res, next) => {
-//   Box.findById(idBoxDetails)
-//     .populate('user')
-//     .then(data => res.json(data))
-//     .catch(err => console.log(err));
-// });
-
+//Add favorites
+router.post("/addfav", (req, res, next) => {
+  let boxId = req.body.box;
+  let userId = req.body.user;
+  console.log(boxId);
+  console.log(userId);
+  User.updateOne(
+    { _id: userId },
+    {
+      $push: {
+        favs: boxId
+      }
+    }
+  )
+    .then(user => {
+      console.log(`fav added ${user.favs}`);
+    })
+    .then(() => res.json({ created: true }))
+    .catch(err => console.log(err));
+});
 // Show user's profile page:  ensureLogin.ensureLoggedIn(),
 router.get("/users/:id", (req, res, next) => {
   const currentUser = req.user;

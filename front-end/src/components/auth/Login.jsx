@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "./Login.scss";
 
 import { TextField } from "@material-ui/core";
+import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
 
 class Login extends Component {
   constructor(props) {
@@ -18,7 +20,6 @@ class Login extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-
     this.service
       .login(username, password)
       .then(response => {
@@ -27,7 +28,6 @@ class Login extends Component {
           password: password,
           error: false
         });
-
         this.props.getUser(response);
       })
       .catch(error => {
@@ -96,16 +96,16 @@ class Login extends Component {
                     </div>
                   </div>
                   <div className="footer text-center">
-                    <input
-                      type="submit"
-                      value="Login"
-                      className="btn btn-secondary"
-                    />
+                    <ButtonGroup aria-label="Basic example">
+                      <Button type="submit" value="Login" variant="secondary">
+                        Login
+                      </Button>
+                    </ButtonGroup>
                   </div>
-                  <Link className="change-signup" to="/SignUp">
-                    SignUp
-                  </Link>
                 </form>
+                <Link className="change-signup" to="/SignUp">
+                  SignUp
+                </Link>
               </div>
             </div>
           </div>

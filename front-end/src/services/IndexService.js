@@ -34,6 +34,14 @@ class IndexService {
       })
       .then(response => response.data);
   };
+  addfav = (box, user) => {
+    console.log("services");
+    console.log(box);
+    console.log(user);
+    return this.service
+      .post("/addfav", { box, user })
+      .then(response => response.data);
+  };
   getSearchBox = box =>
     this.service
       .get(`/search/${box}`)
