@@ -99,7 +99,7 @@ class BoxDetails extends Component {
             </div>
             <div className="card-body ">
               <div className="tab-content text-center">
-                <div className="tab-pane " id="profile">
+                <div className="tab-pane active" id="profile">
                   <div className="row">
                     <Card className="col data">
                       <div className="map">
@@ -149,7 +149,7 @@ class BoxDetails extends Component {
                     </Card>
                   </div>
                 </div>
-                <div className="tab-pane active" id="material">
+                <div className="tab-pane" id="material">
                   <div className="mini-data row">
                     <div className="col">
                       <h3>Machines</h3>

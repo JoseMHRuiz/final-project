@@ -28,7 +28,7 @@ class Login extends Component {
           password: password,
           error: false
         });
-        history.push("/main");
+        history.push("/");
         this.props.getUser(response);
       })
       .catch(error => {

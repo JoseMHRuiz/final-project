@@ -41,7 +41,7 @@ class App extends Component {
       this.setState({
         loggedInUser: null
       });
-      history.push("/main");
+      history.push("/");
     });
   };
   fetchUser() {
@@ -86,7 +86,7 @@ class App extends Component {
               getUser={this.getUser}
               logout={logout}
             />{" "}
-            <Route exact path="/main" render={() => <Main></Main>} />
+            <Route exact path="/" render={() => <Main></Main>} />
             <Route
               exact
               path="/profile"
@@ -125,7 +125,7 @@ class App extends Component {
               path="/login"
               render={() => <Login getUser={this.getUser} />}
             />
-            <Route exact path="/main" render={() => <Main></Main>} />
+            <Route exact path="/" render={() => <Main></Main>} />
             <Route exact path="/boxes" render={() => <Boxes></Boxes>} />
             <Route
               path="/boxes/:id"
