@@ -9,20 +9,19 @@
   max-height: 50%;
 }
 .button-main {
-  position: absolute;
   top: 29%;
   left: 45%;
 }
 h1.text-center.title {
-  position: absolute;
+  font-size: 2rem;
   left: 34%;
   top: 5%;
 }
 h4.text-center {
-  position: absolute;
+  font-size: 2rem;
   top: 15%;
   left: 25%;
-  min-width: 45rem;
+  /* min-width: 45rem; */
 }
 
 #text-central-main {
